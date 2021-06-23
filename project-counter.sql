@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80021
 File Encoding         : 65001
 
-Date: 2021-06-22 22:01:07
+Date: 2021-06-23 21:17:10
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -258,12 +258,14 @@ CREATE TABLE `user` (
   `username` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `nama` varchar(255) DEFAULT NULL,
-  `no_telpn` varchar(255) DEFAULT NULL,
+  `no_telp` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `alamat` text,
   `level` enum('admin','teknisi','penjual') DEFAULT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
+INSERT INTO `user` VALUES ('1', 'endra1@mail.com', '$2y$10$qD3lTQbquHaeoXthhiA97ONPikLe.cmthFYNVx3rX1HqNndi/oFbO', 'Endra1', '01234561', 'camiles1', 'penjual');
+INSERT INTO `user` VALUES ('2', 'test@mail.com', '$2y$10$wyntgtauQyGOHE3shqWdtur4KWODHNvS8QFlBSPMlhFk0daZ3kLy.', 'test', '132', 'asd', 'admin');
