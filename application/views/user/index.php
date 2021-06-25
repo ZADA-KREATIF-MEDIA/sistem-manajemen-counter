@@ -1,19 +1,19 @@
-<div class="container-fluid">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-            <a href="#">User</a>
-        </li>
-        <li class="breadcrumb-item active">Data User</li>
-    </ol>
-    <div class="card mb-3">
-        <div class="card-header">
-            DATA USER
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#tambahUserModal">
-                Tambah User
+<div class="card-body">
+    <div class="alert alert-light-primary">
+        <h4 class="alert-heading">Data Barang/Smartphone</h4>
+        <p>Pada tabel di bawah merupakan data barang yang tersedia dalam toko.</p>
+        <hr>
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#tambahUserModal">
+                Tambah Data Pengguna
             </button>
-        </div>
-        <div class="card-body table-responsive">
+    </div>
+    
+</div>
+
+<div class="card-body">
+
+
+       
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
@@ -36,8 +36,8 @@
                                 <td><?php echo $item->no_telp ?></td>
                                 <td><?php echo $item->level ?></td>
                                 <td class="text-center">
-                                    <button data-bs-target="#editUser<?php echo $item->id_user; ?>" type="button" class="btn btn-info" title="Edit" data-bs-toggle="modal" ><i class="fa fa-edit"></i></button>
-                                    <button type="button" class="btn btn-danger" onclick="alertUser(<?php echo $item->id_user; ?>)" title="Hapus"><i class="fa fa-trash"></i></button>
+                                    <button data-bs-target="#editUser<?php echo $item->id_user; ?>" type="button" class="btn btn-sm btn-primary" title="Edit" data-bs-toggle="modal" ><span>EDIT<span>
+                                    <button type="button" class="btn btn-sm btn-danger" onclick="alertUser(<?php echo $item->id_user; ?>)" title="Hapus"><span>HAPUS</span></button>
                                 </td>
                             </tr>
                             <?php $no++ ?>
@@ -45,9 +45,9 @@
                     </tbody>
                 </table>
             </div>
-        </div>
+        
     </div>
-</div>
+
 <!-- Modal Tambah User -->
 <div class="modal fade" id="tambahUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

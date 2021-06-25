@@ -23,12 +23,13 @@ Class Pembelian extends CI_Controller{
             'keterangan'    => $this->input->post('keterangan',TRUE)
         ];
         $id = $this->mod->save_tbl_barang($data_barang);
+
         $data_pembelian = [
-            'kode_pembelian'=> $id,
+            
             'imei'          => $imei,
             'nama_barang'   => $this->input->post('nama_barang',TRUE),
             'harga_beli'    => $harga,
-            'nama_customer' => $this->input->post('nama',TRUE),
+            'tanggal'       => date('Y-m-d'),
             'metode_bayar'  => $this->input->post('pembayaran',TRUE),
             'id_user'       => $this->session->userdata('id_user',TRUE),
             'uang_muka'     => $uang_muka
@@ -56,7 +57,8 @@ Class Pembelian extends CI_Controller{
             'nama'              => $nama,
             'no_telpn'          => $this->input->post('no_telpn',true),
             'alamat'            => $this->input->post('alamat',true),
-            'kode_pembelian'    => $id
+            'kode_pembelian'    => $id,
+            'imei'          => $imei,
         ];
         $this->mod->save_cus($data);
         $_SESSION['msg'] = "pembelian sukses";

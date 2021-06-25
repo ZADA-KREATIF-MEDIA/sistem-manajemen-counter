@@ -8,7 +8,7 @@ Class Model_transaksi extends CI_Model
     {
         $this->db->select()
                 ->from('barang')
-                ->where('status =','in_stock');    
+                ->where('status =','instock');    
         $query  = $this->db->get();
         return $query;
     }

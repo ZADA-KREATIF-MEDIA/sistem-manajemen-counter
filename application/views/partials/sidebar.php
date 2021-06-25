@@ -23,7 +23,7 @@
                                 </li>
                            
 							<li class="submenu-item ">
-                                    <a href=<?php echo site_url('Pembelian') ?>>Pembelian Smartphone</a>
+                                    <a href=<?php echo site_url('Pembelian') ?>>Pembelian Smartphone &#10003;</a>
                                 </li>
                            
                            
@@ -36,10 +36,10 @@
                             </a>
                             <ul class="submenu ">
                                 <li class="submenu-item ">
-                                    <a href="<?php echo site_url('Laporan_pembelian') ?>">Data Pembelian</a>
+                                    <a href="<?php echo site_url('Laporan_pembelian') ?>">Data Pembelian &#10003;</a>
                                 </li>
 								<li class="submenu-item ">
-                                    <a href="<?php echo site_url('Laporan_penjualan') ?>">Data Penjualan</a>
+                                    <a href="<?php echo site_url('Laporan_penjualan') ?>">Data Penjualan &#10003;</a>
                                 </li>
                            
 								<li class="submenu-item ">
@@ -60,8 +60,8 @@
                             </a>
 							<ul  class="submenu ">
 							<li class="submenu-item ">
-                                    <a href=<?php echo site_url('Barang') ?>>Data Barang</a>
-									<a href=<?php echo site_url('user') ?>>Data Pengguna</a>
+                                    <a href=<?php echo site_url('Barang') ?>>Data Barang &#10003;</a>
+									<a href=<?php echo site_url('user') ?>>Data Pengguna &#10003;</a>
                                 </li>
                            
                            

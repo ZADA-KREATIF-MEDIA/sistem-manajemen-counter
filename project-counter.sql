@@ -27,7 +27,7 @@ CREATE TABLE `barang` (
   `keterangan` text,
   `status` enum('instock','terjual') DEFAULT NULL,
   PRIMARY KEY (`imei`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_0900_ai_ci;
 
 -- ----------------------------
 -- Records of barang
@@ -45,7 +45,7 @@ CREATE TABLE `customer` (
   `tgl_daftar` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `kode_pembelian` int DEFAULT NULL,
   PRIMARY KEY (`id_customer`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_0900_ai_ci;
 
 -- ----------------------------
 -- Records of customer
@@ -64,7 +64,7 @@ CREATE TABLE `part` (
   `keterangan` text,
   `id_teknisi` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_0900_ai_ci;
 
 -- ----------------------------
 -- Records of part
@@ -81,7 +81,7 @@ CREATE TABLE `pemasukan` (
   `tanggal` date DEFAULT NULL,
   `keterangan` text,
   PRIMARY KEY (`id_pemasukan`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_0900_ai_ci;
 
 -- ----------------------------
 -- Records of pemasukan
@@ -103,7 +103,7 @@ CREATE TABLE `pembelian` (
   `tanggal_bayar` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `uang_muka` bigint DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_0900_ai_ci;
 
 -- ----------------------------
 -- Records of pembelian
@@ -120,35 +120,13 @@ CREATE TABLE `pengeluaran` (
   `tanggal` date DEFAULT NULL,
   `keterangan` text,
   PRIMARY KEY (`id_pengeluaran`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_0900_ai_ci;
 
 -- ----------------------------
 -- Records of pengeluaran
 -- ----------------------------
 
--- ----------------------------
--- Table structure for `penjualan`
--- ----------------------------
-DROP TABLE IF EXISTS `penjualan`;
-CREATE TABLE `penjualan` (
-  `id_penjualan` int NOT NULL AUTO_INCREMENT,
-  `imei` char(255) DEFAULT NULL,
-  `nama_barang` varchar(255) DEFAULT NULL,
-  `harga_beli` bigint DEFAULT NULL,
-  `harga_jual` bigint DEFAULT NULL,
-  `keterangan` text,
-  `nama_customer` varchar(255) DEFAULT NULL,
-  `id_user` int NOT NULL,
-  `metode_bayar` enum('cash','hutang','transfer') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `tanggal` date DEFAULT NULL,
-  `kode_pembelian` bigint DEFAULT NULL,
-  `uang_muka` bigint DEFAULT NULL,
-  PRIMARY KEY (`id_penjualan`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- ----------------------------
--- Records of penjualan
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for `penjualan_tmp`
@@ -168,7 +146,7 @@ CREATE TABLE `penjualan_tmp` (
   `kode_pembelian` bigint DEFAULT NULL,
   `uang_muka` bigint DEFAULT NULL,
   PRIMARY KEY (`id_penjualan_tmp`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_0900_ai_ci;
 
 -- ----------------------------
 -- Records of penjualan_tmp
@@ -184,7 +162,7 @@ CREATE TABLE `saldo_awal` (
   `nominal` bigint DEFAULT NULL,
   `keterangan` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_0900_ai_ci;
 
 -- ----------------------------
 -- Records of saldo_awal
@@ -211,7 +189,7 @@ CREATE TABLE `service` (
   `tanggal_jadi` date DEFAULT NULL,
   `tanggal_diambil` date DEFAULT NULL,
   PRIMARY KEY (`id_service`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_0900_ai_ci;
 
 -- ----------------------------
 -- Records of service
@@ -227,7 +205,7 @@ CREATE TABLE `service_part` (
   `biaya` bigint DEFAULT NULL,
   `nama_part` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_part`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_0900_ai_ci;
 
 -- ----------------------------
 -- Records of service_part
@@ -243,7 +221,7 @@ CREATE TABLE `service_software` (
   `biaya` bigint DEFAULT NULL,
   `nama_software` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_software`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_0900_ai_ci;
 
 -- ----------------------------
 -- Records of service_software
@@ -258,11 +236,11 @@ CREATE TABLE `user` (
   `username` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `nama` varchar(255) DEFAULT NULL,
-  `no_telp` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `no_telp` varchar(255) CHARACTER SET utf8 COLLATE utf8_0900_ai_ci DEFAULT NULL,
   `alamat` text,
   `level` enum('admin','teknisi','penjual') DEFAULT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_0900_ai_ci;
 
 -- ----------------------------
 -- Records of user

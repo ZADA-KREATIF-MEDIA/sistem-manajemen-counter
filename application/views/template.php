@@ -88,7 +88,21 @@
 
     <script src="<?= base_url() ?>assets/js/main.js"></script>
   
-  
+      <!-- Jquery Plugin-->
+      <script src="<?php echo base_url() ?>assets_old/vendor/jquery/jquery.min.js"></script>
+    <script src="<?php echo base_url() ?>assets_old/js/scripts.js"></script>
+    <script src="<?php echo base_url() ?>assets_old/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="<?php echo base_url() ?>assets_old/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Custom scripts for all pages-->
+
+      <script src="<?php echo base_url(); ?>assets_old/vendor/jquery-ui/jquery-ui.js"></script>
+    <script src="<?php echo base_url() ?>assets_old/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?php echo base_url() ?>assets_old/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="<?php echo base_url() ?>assets_old/vendor/datatables/dataTables.responsive.min.js"></script>
+    <script src="<?php echo base_url() ?>assets_old/vendor/datatables/responsive.bootstrap4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.js"></script>
+    <script src="<?php echo base_url() ?>assets_old/vendor/sweetalert2/sweetalert2.all.min.js"></script>
   
 	
     

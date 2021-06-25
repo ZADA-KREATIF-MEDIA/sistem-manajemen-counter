@@ -4,18 +4,19 @@ Class Model_laporanPembelian extends CI_Model{
     public function show_laporan()
     {	
       $this->db->select('*');
-      $this->db->join('user', 'pembelian.id_user = user.id_user','left');
+      $this->db->join('user', 'pembelian.id_user = user.id_user','left')
+      ->join('customer', 'pembelian.imei = customer.imei','left');
       $data=$this->db->get('pembelian');
       return $data;
     }
 
-    public function show_detail($id_customer)
+    public function show_detail($imei)
     {	
     
       $this->db->select()
         ->from('pembelian')
-        ->join('customer', 'pembelian.kode_pembelian = customer.kode_pembelian','left')
-        ->where('customer.kode_pembelian',$id_customer);
+        ->join('customer', 'pembelian.imei = customer.imei','left')
+        ->where('customer.imei',$imei);
       $query = $this->db->get_compiled_select();
       $data	= $this->db->query($query)->row();
   

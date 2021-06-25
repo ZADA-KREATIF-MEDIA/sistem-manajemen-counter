@@ -83,7 +83,7 @@ Class Model_Barang extends CI_Model
 
     public function m_hapus_barang($id)
     {
-        $this->db->delete('barang',array('kode_pembelian'=>$id));
+        $this->db->delete('barang',array('imei'=>$id));
         return true;
     }
 
