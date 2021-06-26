@@ -33,36 +33,4 @@ class Model_user extends CI_Model
 		$this->db->query($query);
 		return true;
     }
-
-    public function m_get_customer()
-    {
-        $data=$this->db->get('customer');
-        return $data;
-    }
-
-    public function m_store_customer($post)
-    {
-        $this->db->insert('customer', $post);
-        return true;
-    }
-
-    public function m_update_customer($post)
-    {
-        $this->db->select()
-            ->from('customer')
-            ->where("id_customer" , $post['id_customer']);
-        $query = $this->db->set($post)->get_compiled_update();
-        $this->db->query($query);
-        return true;
-    }
-
-    public function m_destroy_customer($id_customer)
-    {
-        $this->db->select()
-            ->from('customer')
-            ->where("id_customer", $id_customer);
-        $query = $this->db->get_compiled_delete();
-        $this->db->query($query);
-        return true;
-    }
 }
