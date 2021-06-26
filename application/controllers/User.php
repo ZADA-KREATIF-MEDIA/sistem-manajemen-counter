@@ -48,4 +48,41 @@ class User extends CI_Controller
         $data = $this->mod->m_destroy($id_user);
         echo json_encode($data);
     }
+
+    public function customer()
+    {
+        $data['customer']=$this->mod->m_get_customer()->result();
+        $this->template->load('template','user/customer', $data);
+    }
+
+    public function store_customer()
+    {
+        $post = [
+            "nama"          => $this->input->post("nama", TRUE),
+            "no_telpn"      => $this->input->post("no_telp", TRUE),
+            "alamat"        => $this->input->post("alamat", TRUE),
+            "tgl_daftar"    => date('Y-m-d') 
+        ];
+        $this->mod->m_store_customer($post);
+        redirect('user/customer');
+    }
+
+    public function update_customer()
+    {
+        $post = [
+            "id_customer"   => $this->input->post('id_customer', TRUE),       
+            "nama"          => $this->input->post("nama", TRUE),
+            "no_telpn"      => $this->input->post("no_telp", TRUE),
+            "alamat"        => $this->input->post("alamat", TRUE),
+        ];
+        $this->mod->m_update_customer($post);
+        redirect('user/customer');
+    }
+
+    public function destroy_customer()
+    {
+        $id_customer = $this->input->post("id_customer", TRUE);
+        $data = $this->mod->m_destroy_customer($id_customer);
+        echo json_encode($data);
+    }
 }
