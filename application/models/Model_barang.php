@@ -11,12 +11,10 @@ Class Model_Barang extends CI_Model
     public function add()
     {
         $data=[
-            'nama_barang' => $this->input->post('nama_barang'),
-            'stok'        => $this->input->post('stok'),
-            'harga_beli'  => $this->input->post('harga_beli'),
-            'harga_jual'  => $this->input->post('harga_jual'),
-            'diskon'      => $this->input->post('diskon'),
-            'keterangan'  => $this->input->post('keterangan')
+            'imei'          => $this->input->post('imei'),
+            'nama_barang'   => $this->input->post('nama_barang'),
+            'harga_beli'    => $this->input->post('harga_beli'),
+            'keterangan'    => $this->input->post('keterangan')
         ];
         $this->db->insert('barang',$data);
     }
@@ -91,7 +89,7 @@ Class Model_Barang extends CI_Model
     {
         $this->db->select('kode_pembelian')
             ->from('penjualan_tmp')
-            ->where('kode_pembelian',$id);
+            ->where('imei',$id);
         $query = $this->db->get_compiled_select();
         $data  = $this->db->query($query)->row_array();
         return $data;
@@ -99,7 +97,7 @@ Class Model_Barang extends CI_Model
 
     public function m_hapus_tmp($id)
     {
-        $this->db->delete('penjualan_tmp',array('kode_pembelian'=>$id));
+        $this->db->delete('penjualan_tmp',array('imei'=>$id));
         return true;
     }
 

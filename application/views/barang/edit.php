@@ -16,23 +16,19 @@
                 <div div class="card-body">
                     <div class="form-group">
                         <label for="nama_bencana">IMEI/SN</label>
-                    <input type="text" value="<?php echo $barang['imei'] ?>" class="form-control" name="nama_barang" required=""  disabled>
+                    <input type="text" value="<?php echo $barang['imei'] ?>" class="form-control" name="nama_barang" disabled>
                 </div>
                 <div class="form-group">
-                    <label for="nama_bencana">Nama Barang</label>
-                    <input type="text" value="<?php echo $barang['nama_barang'] ?>" class="form-control" name="nama_barang" required="">
+                    <label for="nama_barang">Nama Barang</label>
+                    <input type="text" id="nama_barang" value="<?php echo $barang['nama_barang'] ?>" class="form-control" name="nama_barang" required>
                 </div>
                 <div class="form-group">
-                    <label for="foto">Harga Beli</label>
-                    <input type="text" value="<?php echo $barang['harga_beli'] ?>"  name="harga_beli" class="form-control uang" requred="">
+                    <label for="harga_beli">Harga Beli</label>
+                    <input type="text" id="harga_beli" value="<?php echo $barang['harga_beli'] ?>"  name="harga_beli" class="form-control uang" requred>
                 </div>
-                <!-- <div class="form-group">
-                    <label for="foto">Harga Jual</label>
-                    <input type="text" value="<?php echo $barang['harga_jual'] ?>"  name="harga_jual" class="form-control uang" requred="">
-                </div> -->
                 <div class="form-group">
                     <label for="keterangan">Keterangan</label>
-                    <textarea name="keterangan" cols="30" rows="10" class="form-control"><?php echo $barang['keterangan'] ?></textarea>
+                    <textarea name="keterangan" id="keterangan" class="form-control"><?php echo $barang['keterangan'] ?></textarea>
                 </div>
             </div>
             <div class="card-footer bg-transparent">

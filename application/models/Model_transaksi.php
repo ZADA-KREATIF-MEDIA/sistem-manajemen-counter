@@ -15,7 +15,7 @@ Class Model_transaksi extends CI_Model
     
     public function m_show_transaksi($id_user)
     {
-        $this->db->select('penjualan_tmp.id_penjualan_tmp, penjualan_tmp.imei, penjualan_tmp.nama_customer, barang.nama_barang, penjualan_tmp.harga_jual,penjualan_tmp.kode_pembelian')
+        $this->db->select('penjualan_tmp.id_penjualan_tmp, penjualan_tmp.imei, penjualan_tmp.nama_customer, barang.nama_barang, penjualan_tmp.harga_jual, penjualan_tmp.no_telpn')
                 ->from('penjualan_tmp')
                 ->join('barang', 'barang.imei = penjualan_tmp.imei', 'left')
                 ->join('user', 'user.id_user = penjualan_tmp.id_user','left')
@@ -83,7 +83,7 @@ Class Model_transaksi extends CI_Model
 
     public function m_get_harga_barang($id_barang)
     {
-        $this->db->select('harga_beli,nama_barang,kode_pembelian')
+        $this->db->select('harga_beli,nama_barang')
             ->from('barang')
             ->where('imei', $id_barang);
         $query  = $this->db->get_compiled_select();
@@ -151,42 +151,10 @@ Class Model_transaksi extends CI_Model
         return $data;
     }
 
-    public function m_store_piutang($piutang)
+    public function m_save_customer($customer)
     {
-        $this->db->insert('piutang',$piutang);
-        return true;
+        $this->db->insert_batch('customer', $customer);
+		return true;
     }
 
-    public function m_delete_piutang($kode_pembelian)
-    {
-        $this->db->where_in('id_pembelian', $kode_pembelian);    
-        $this->db->delete('piutang');
-        return true;
-    }
-
-    public function m_get_piutang($kode_pembelian)
-    {
-        $this->db->select('nominal_terbayar')
-            ->from('piutang')
-            ->where('id_pembelian', $kode_pembelian);
-        $query  = $this->db->get_compiled_select();
-        $data   = $this->db->query($query)->row_array();
-        return $data;
-    }
-
-    public function m_update_total_hutang($update)
-    {
-        $this->db->select()
-            ->from('piutang')
-            ->where("id_pembelian", $update['id_pembelian']);
-        $query = $this->db->set($update)->get_compiled_update();
-        $this->db->query($query);
-        return true;
-    }
-
-    public function m_update_status_piutang_belum($piutang)
-    {
-        $this->db->update_batch('piutang', $piutang, 'id_pembelian'); 
-		return true;	
-    }
 }

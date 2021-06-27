@@ -95,7 +95,7 @@
   <script src="<?php echo base_url() ?>assets_old/vendor/datatables/dataTables.bootstrap4.min.js"></script>
   <script src="<?php echo base_url() ?>assets_old/vendor/datatables/dataTables.responsive.min.js"></script>
   <script src="<?php echo base_url() ?>assets_old/vendor/datatables/responsive.bootstrap4.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.js"></script>
+  <script src="<?php echo base_url() ?>assets/js/jquery.mask.js"></script>
   <script src="<?php echo base_url() ?>assets_old/vendor/sweetalert2/sweetalert2.all.min.js"></script>
 
 
@@ -131,7 +131,7 @@
           },
           success: function(res) {
             var data = $.parseJSON(res);
-            $("#kodePembelian").val(data.kode_pembelian);
+            console.log(data);
             $("#namaBarang").val(data.nama_barang);
             $("#hargaBeli").val(convertToRupiah(data.harga_beli));
             $("#hargaBarang").val(data.harga_beli);
@@ -403,6 +403,7 @@
               id: id
             },
             success: function(res) {
+              console.log(res);
               Swal.fire(
                 'Deleted!',
                 'Barang berhasil di hapus.',

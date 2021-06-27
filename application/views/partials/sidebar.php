@@ -73,5 +73,6 @@
                 </li>
             </ul>
         </li>
+        <a href="<?= base_url('login/logout') ?>" class="btn btn-danger btn-sm btn-block mt-3">Logout</a>
     </ul>
 </div>

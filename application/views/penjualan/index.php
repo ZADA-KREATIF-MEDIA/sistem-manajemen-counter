@@ -6,11 +6,27 @@
     </ol>
     <div class="card mb-12">
         <div class="card-header">
-            <i class="fa fa-list"></i> Transaksi Penjualan
+            <i class="fas fa-list"></i> Transaksi Penjualan
         </div>
         <?php echo form_open('Transaksi/add') ?>
         <div class="card-body table-responsive">
             <div class="row">
+            <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="nama_pembeli">Nama Pembeli</label>
+                        <input type="text" class="form-control" name="nama_pembeli" id="nama_pembeli" placeholder="Nama Customer" required>
+                    </div>
+                </div> 
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="no_telpn">Nomor Telephone</label>
+                        <input type="text" class="form-control" name="no_telpn" id="no_telpn" placeholder="Nomor telepon" required>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <label for="alamat">Alamat</label>
+                    <textarea name="alamat" id="alamat" class="form-control" placeholder="Masukkan alamat"></textarea>
+                </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="kode_barang">Nama Barang</label>
@@ -22,14 +38,14 @@
                         </select>
                     </div>
                 </div>
-                <div class="row col-md-6 pr-0">
+                <div class="row col-6 mx-0 px-0">
                     <div class="col-8">
                         <div class="form-group">
                             <label for="imei">IMEI</label>
                             <input type="text" class="form-control" name="imei" id="imei" value="" readonly="">
                         </div>
                     </div>
-                    <div class="col-4 pr-0">
+                    <div class="col-4">
                         <div class="form-group">
                             <label for="hargaBeli">Harga</label>
                             <input type="text" name="harga_beli" id="hargaBeli" class="form-control" value="" readonly="">
@@ -40,47 +56,28 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="nama_pembeli">Nama Pembeli</label>
-                        <input type="text" class="form-control" name="nama_pembeli" id="nama_pembeli" placeholder="Nama Customer" required="">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
                         <label for="keterangan">Keterangan</label>
-                        <textarea name="keterangan" id="keterangan" cols="5"  class="form-control" placeholder="Tambahkan keterangan tetang produk yang di jual"></textarea>
+                        <textarea name="keterangan" id="keterangan" cols="30" rows="4" class="form-control" placeholder="Tambahkan keterangan tetang produk yang di jual"></textarea>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="pembayaran">Pembayaran</label>
-                        <select name="pembayaran" id="pembayaran" class="form-control" required="">
-                            <option>-- Pilih Metode Pembayaran --</option>
-                            <option value="cash">Cash</option>
-                            <option value="transfer">Transfer</option>
-                            <option value="hutang">Hutang</option>
-                        </select>
+                <div class="col-6 row mx-0 px-0">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="pembayaran">Pembayaran</label>
+                            <select name="pembayaran" id="pembayaran" class="form-control" required="">
+                                <option>-- Pilih Metode Pembayaran --</option>
+                                <option value="cash">Cash</option>
+                                <option value="transfer">Transfer</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <label for="nama_petugas">Nama Petugas</label>
+                        <input type="hidden" name="id_user" value="<?php echo $this->session->userdata('id_user') ?>">
+                        <input type="text" class="form-control" name="nama_petugas" value="<?php echo $this->session->userdata('nama') ?>" readonly>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <label for="nama_petugas">Nama Petugas</label>
-                    <input type="hidden" name="id_user" value="<?php echo $this->session->userdata('id_user') ?>">
-                    <input type="text" class="form-control" name="nama_petugas" value="<?php echo $this->session->userdata('nama') ?>" readonly>
-                </div>
-                <div class="col-md-6 d-none" id="blockUangMuka">
-                    <div class="form-group">
-                        <label for="uang_muka">Uang Muka</label>
-                        <input type="text" class="form-control uang" name="uang_muka" id="uang_muka" placeholder="Masukkan Uang Muka">
-                    </div>
-                </div>
-                <div class="col-md-6 d-none" id="blockTanggalJatuhTempo">
-                    <div class="form-group">
-                        <label for="tanggalJatuhTempo">Tanggal Jatuh Tempo</label>
-                        <input type="text" class="form-control datepicker" name="tanggal_jatuh_tempo" id="tanggalJatuhTempo">
-                    </div>
-                </div>
-                <input type="hidden" name="kode_pembelian" id="kodePembelian" value="">
                 <input type="hidden" name="nama_barang" id="namaBarang" value="">
-                <!-- <input type="hidden" name="harga_beli" id="hargaBeli" value=""> -->
                 <input type="hidden" name="harga_barang" id="hargaBarang" value="">
                 <div class="col-md-6 pt-2 pt-lg-0">
                     <div class="form-group float-right">
@@ -100,6 +97,8 @@
         </div>
         <tr>
             <th>No</th>
+            <th>Nama Customer</th>
+            <th>No Telp</th>
             <th>Nama Barang</th>
             <th>IMEI</th>
             <th>Harga Barang</th>
@@ -110,16 +109,18 @@
             <?php foreach($transaksi as $item): ?>
         <tr>
             <td><?php echo $no; ?></td>
+            <td><?php echo $item['nama_customer']?></td>
+            <td><?php echo $item['no_telpn'] ?></td>
             <td><?php echo $item['nama_barang'] ?></td>
             <td><?php echo $item['imei'] ?></td>
             <td><a href="#gantiHarga<?php echo $item['imei']; ?>"  data-toggle="modal"><?php echo number_format($item['harga_jual'],0,'.','.') ?></a></td>
-            <td><?php echo anchor('Transaksi/cancel/'.$item['imei'].'/'.$item['kode_pembelian'],'Cancel',['class'=>'btn btn-danger']) ?></td>
+            <td><?php echo anchor('Transaksi/cancel/'.$item['imei'],'Cancel',['class'=>'btn btn-danger']) ?></td>
         </tr>
         <?php $total += $item['harga_jual']; ?>
         <?php $no++ ?>
         <?php  endforeach; ?>
         <tr>
-            <td colspan="4"><p align="right"><i class="fab fa-wolf-pack-battalion"> Total </i></p></td>
+            <td colspan="6"><p align="right"><i class="fab fa-wolf-pack-battalion"> Total </i></p></td>
             <td><?php echo "Rp.".number_format($total).",-" ?></td>
         </tr>
     </table>
@@ -138,7 +139,6 @@
         <?php echo form_open('Transaksi/update_harga_jual') ?>
         <div class="modal-body">
             <input type="hidden" name = "imei" value="<?php echo $item['imei']; ?>">
-            <input type="hidden" name ="kode_pembelian" value="<?php echo $item['kode_pembelian']; ?>">
             <input type="text" name = "harga_jual_baru" value="<?php echo number_format($item['harga_jual'],0,'.','.'); ?>" class="form-control uang">
         </div>
         <div class="modal-footer">

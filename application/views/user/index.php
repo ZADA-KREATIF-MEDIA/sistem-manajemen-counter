@@ -1,53 +1,47 @@
 <div class="card-body">
     <div class="alert alert-light-primary">
-        <h4 class="alert-heading">Data Barang/Smartphone</h4>
+        <h4 class="alert-heading">Data Pengguna Sistem</h4>
         <p>Pada tabel di bawah merupakan data barang yang tersedia dalam toko.</p>
         <hr>
         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#tambahUserModal">
-                Tambah Data Pengguna
-            </button>
+            Tambah Data Pengguna
+        </button>
     </div>
-    
 </div>
-
 <div class="card-body">
-
-
-       
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Username</th>
-                            <th>Nama</th>
-                            <th>Nomor Telepon</th>
-                            <th>Level</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $no = 1 ?>
-                        <?php foreach ($user as $item) : ?>
-                            <tr>
-                                <td><?php echo $no ?></td>
-                                <td><?php echo $item->username ?></td>
-                                <td><?php echo $item->nama ?></td>
-                                <td><?php echo $item->no_telp ?></td>
-                                <td><?php echo $item->level ?></td>
-                                <td class="text-center">
-                                    <button data-bs-target="#editUser<?php echo $item->id_user; ?>" type="button" class="btn btn-sm btn-primary" title="Edit" data-bs-toggle="modal" ><span>EDIT<span>
-                                    <button type="button" class="btn btn-sm btn-danger" onclick="alertUser(<?php echo $item->id_user; ?>)" title="Hapus"><span>HAPUS</span></button>
-                                </td>
-                            </tr>
-                            <?php $no++ ?>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
-        
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Username</th>
+                    <th>Nama</th>
+                    <th>Nomor Telepon</th>
+                    <th>Level</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php $no = 1 ?>
+                <?php foreach ($user as $item) : ?>
+                    <tr>
+                        <td><?php echo $no ?></td>
+                        <td><?php echo $item->username ?></td>
+                        <td><?php echo $item->nama ?></td>
+                        <td><?php echo $item->no_telp ?></td>
+                        <td><?php echo $item->level ?></td>
+                        <td class="text-center">
+                            <button data-bs-target="#editUser<?php echo $item->id_user; ?>" type="button" class="btn btn-sm btn-primary" title="Edit" data-bs-toggle="modal"><span>EDIT<span>
+                                        <button type="button" class="btn btn-sm btn-danger" onclick="alertUser(<?php echo $item->id_user; ?>)" title="Hapus"><span>HAPUS</span></button>
+                        </td>
+                    </tr>
+                    <?php $no++ ?>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
     </div>
 
+</div>
 <!-- Modal Tambah User -->
 <div class="modal fade" id="tambahUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

@@ -39,13 +39,9 @@ Class Barang extends CI_Controller{
       $id=$this->input->post('id',true);
       $this->mod->m_hapus_barang($id);
       $cek = $this->mod->m_cek_tmp($id);
-      if($cek['kode_pembelian'] !=""){
+      if($cek){
         $this->mod->m_hapus_tmp($id);
       }
-      // $this->db->where('kode_pembelian',$id);
-      // $this->db->delete('barang');
-      // $this->db->delete('penjualan_tmp');
-      
     }
 
     public function export(){

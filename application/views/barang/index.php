@@ -1,12 +1,13 @@
 <div class="card-body">
-    <div class="alert alert-success">
+    <div class="alert alert-light-primary">
         <h4 class="alert-heading">Data Barang/Smartphone</h4>
         <p>Pada tabel di bawah merupakan data barang yang tersedia dalam toko.</p>
+        <hr>
+        <a href="<?= base_url('barang/tambah') ?>" class="btn btn-success">Tambah Barang</a>
     </div>
 </div>
 
 <div class="card mb-3">
-  
     <div class="card-body table-responsive">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -39,11 +40,9 @@
                                 <a href="<?php echo site_url('Barang/edit/' . $item->imei) ?>" class="btn btn-sm btn-primary">
                                     <span>EDIT</span>
                                 </a>&nbsp;
-                                <!-- <?php echo form_open('Barang/hapus/' . $item->imei) ?> -->
-                                <button type="submit" class="btn btn-sm btn-danger" onclick="hapusBarang(<?php echo $item->imei; ?>)">
+                                <button type="button" class="btn btn-sm btn-danger" onclick="hapusBarang('<?php echo $item->imei; ?>')">
                                     <span>HAPUS</span>
                                 </button>
-                                <!-- <?php echo form_close() ?> -->
                                 &nbsp;
                                 <?php if (($item->status == "tmp") && ($this->session->userdata('level') == "admin")) : ?>
                                     <button type="button" class="btn btn-sm btn-success" onclick="ubahInStock(<?php echo $item->imei; ?>)">
