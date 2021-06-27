@@ -7,14 +7,26 @@
 </div>
 <!--END JUDUL -->
 
-<div class="card-body">
-	<div class="row">
-		<div class="col-md-6">
-			<!--<button class="btn btn-block btn-info" id="tambah" onclick="add()">Tambah barang</button>-->
-			<br>
+<form method="post" class="form-horizon" action="<?= base_url('pembelian/save_barang') ?>">
+	<div class="card-body">
+		<div class="col-md-12">
+			<h4>DATA Penjual</h4>
+			<hr class="bg-success">
+		</div>
+		<div class="form-group col-md-12">
+			<strong><label>Customer</label></strong>
+			<input type="text" name="nama" placeholder="Masukan nama customer" class="form-control">
+		</div>
+		<div class="form-group col-md-12">
+			<strong><label>No Hp</label></strong>
+			<input type="text" name="no_telpn" placeholder="Masukan nomor telephone customer" class="form-control" maxlength="12">
+		</div>
+		<div class="form-group col-md-12">
+			<strong><label>Alamat</label></strong>
+			<textarea name="alamat" rows="4" cols="50" class="form-control " placeholder="Masukan alamat lengkap customer" required></textarea>
 		</div>
 	</div>
-	<form method="post" class="form-horizon" action="<?= base_url('pembelian/save_barang') ?>">
+	<div class="card-body">
 		<div class="col-md-12">
 			<h4>DATA BARANG</h4>
 			<hr class="bg-primary">
@@ -31,64 +43,31 @@
 			<strong><label>Nama Barang</label></strong>
 			<input type="text" name="nama_barang" placeholder="Masukan nama Barang" class="form-control" required>
 		</div>
-		<div class="form-group col-md-12">
-			<strong><label>Harga barang</label></strong>
-			<input type="text" name="harga" class="form-control harga uang" placeholder="Masukan harga barang" required>
+		<div class="row col-12 mx-0">
+			<div class="form-group col-6 px-0">
+				<strong><label>Harga barang</label></strong>
+				<input type="text" name="harga" class="form-control harga uang" placeholder="Masukan harga barang" required>
+			</div>
+			<div class="form-group col-6 px-0">
+				<strong><label for="pembayaran">Metode Pembayaran</label></strong>
+				<select name="pembayaran" id="pembayaran" class="form-control" required="">
+					<option>-- Pilih Metode Pembayaran --</option>
+					<option value="cash">Cash</option>
+					<option value="transfer">Transfer</option>
+				</select>
+			</div>
 		</div>
 		<div class="form-group col-md-12">
 			<strong><label>Keterangan</label></strong>
 			<textarea name="keterangan" class="form-control " rows="4" cols="50" placeholder="Masukan  keterangan barang kelengkapan, kondisi dan keterangan tambahan lainya"></textarea>
 		</div>
-		<div class="row col-md-12">
-			<div class="col-md-4">
-				<div class="form-group">
-					<strong><label for="pembayaran">Metode Pembayaran</label></strong>
-					<select name="pembayaran" id="pembayaran" class="form-control" required="">
-						<option>-- Pilih Metode Pembayaran --</option>
-						<option value="cash">Cash</option>
-						<option value="transfer">Transfer</option>
-						<option value="hutang">Hutang</option>
-					</select>
-				</div>
-			</div>
-			<div class="col-md-4 d-none" id="blockUangMuka">
-				<div class="form-group">
-					<label for="uang_muka">Uang Muka</label>
-					<input type="text" class="form-control uang" name="uang_muka" id="uang_muka" placeholder="Masukkan Uang Muka">
-				</div>
-			</div>
-			<div class="col-md-4 d-none" id="blockTanggalJatuhTempo">
-				<div class="form-group">
-					<label for="tanggalJatuhTempo">Tanggal Jatuh Tempo</label>
-					<input type="text" class="form-control datepicker" name="tanggal_jatuh_tempo" id="tanggalJatuhTempo">
-				</div>
-			</div>
-		</div>
-	
-</div>
-<div class="card-body">
-<div class="col-md-12">
-			<h4>DATA PEMBELI</h4>
-			<hr class="bg-success">
-		</div>
-		<div class="form-group col-md-12">
-			<strong><label>Customer</label></strong>
-			<input type="text" name="nama" placeholder="Masukan nama customer" class="form-control">
-		</div>
-		<div class="form-group col-md-12">
-			<strong><label>No Hp</label></strong>
-			<input type="text" name="no_telpn" placeholder="Masukan nomor telephone customer" class="form-control" maxlength="12">
-		</div>
-		<div class="form-group col-md-12">
-			<strong><label>Alamat</label></strong>
-			<textarea name="alamat" rows="4" cols="50" class="form-control " placeholder="Masukan alamat lengkap customer" required></textarea>
-		</div>
+
 		<div class="col-md-12">
 			<br><br>
 			<button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan Data</button>
 		</div>
-	</form>
-</div>
+	</div>
+</form>
 
 <script src="https://code.jquery.com/jquery-3.5.0.js" integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc=" crossorigin="anonymous"></script>
 <script type="text/javascript">
