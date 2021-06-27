@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80021
 File Encoding         : 65001
 
-Date: 2021-06-23 21:17:10
+Date: 2021-06-27 22:34:16
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -25,13 +25,15 @@ CREATE TABLE `barang` (
   `harga_beli` varchar(255) DEFAULT NULL,
   `harga_jual` varchar(255) DEFAULT NULL,
   `keterangan` text,
-  `status` enum('instock','terjual') DEFAULT NULL,
+  `status` enum('instock','tmp','terjual') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'instock',
   PRIMARY KEY (`imei`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of barang
 -- ----------------------------
+INSERT INTO `barang` VALUES ('haperedminote9pr', 'redmi note 9', '3000000', null, 'test', 'instock');
+INSERT INTO `barang` VALUES ('redmi098887645', 'Xiaomi Redmi 9', '2900000', null, 'test', 'instock');
 
 -- ----------------------------
 -- Table structure for `customer`
@@ -43,13 +45,16 @@ CREATE TABLE `customer` (
   `alamat` text,
   `no_telpn` bigint DEFAULT NULL,
   `tgl_daftar` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `kode_pembelian` int DEFAULT NULL,
+  `imei` char(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   PRIMARY KEY (`id_customer`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of customer
 -- ----------------------------
+INSERT INTO `customer` VALUES ('1', 'Endra', 'camiles', '89', '2021-06-27 00:00:00', 'ipx10');
+INSERT INTO `customer` VALUES ('2', 'Endra', 'camiles', '89', '2021-06-27 00:00:00', 'ipxpro10');
+INSERT INTO `customer` VALUES ('3', 'Sammy', 'wonosobo', '789', null, 'haperedminote9pr');
 
 -- ----------------------------
 -- Table structure for `part`
@@ -64,7 +69,7 @@ CREATE TABLE `part` (
   `keterangan` text,
   `id_teknisi` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of part
@@ -81,7 +86,7 @@ CREATE TABLE `pemasukan` (
   `tanggal` date DEFAULT NULL,
   `keterangan` text,
   PRIMARY KEY (`id_pemasukan`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of pemasukan
@@ -99,15 +104,15 @@ CREATE TABLE `pembelian` (
   `keterangan` text,
   `id_customer` int DEFAULT NULL,
   `id_user` int DEFAULT NULL,
-  `metode_bayar` enum('cash','transfer','hutang') DEFAULT NULL,
-  `tanggal_bayar` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `uang_muka` bigint DEFAULT NULL,
+  `metode_bayar` enum('cash','transfer') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `tanggal` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of pembelian
 -- ----------------------------
+INSERT INTO `pembelian` VALUES ('1', 'haperedminote9pr', 'redmi note 9', '3000000', null, null, '3', 'cash', '2021-06-27');
 
 -- ----------------------------
 -- Table structure for `pengeluaran`
@@ -120,13 +125,38 @@ CREATE TABLE `pengeluaran` (
   `tanggal` date DEFAULT NULL,
   `keterangan` text,
   PRIMARY KEY (`id_pengeluaran`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of pengeluaran
 -- ----------------------------
 
+-- ----------------------------
+-- Table structure for `penjualan`
+-- ----------------------------
+DROP TABLE IF EXISTS `penjualan`;
+CREATE TABLE `penjualan` (
+  `id_penjualan` int NOT NULL AUTO_INCREMENT,
+  `imei` char(255) DEFAULT NULL,
+  `nama_barang` varchar(255) DEFAULT NULL,
+  `harga_beli` bigint DEFAULT NULL,
+  `harga_jual` bigint DEFAULT NULL,
+  `keterangan` text,
+  `nama_customer` varchar(255) DEFAULT NULL,
+  `id_user` int NOT NULL,
+  `metode_bayar` enum('cash','hutang','transfer') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `tanggal` date DEFAULT NULL,
+  `kode_pembelian` bigint DEFAULT NULL,
+  `uang_muka` bigint DEFAULT NULL,
+  PRIMARY KEY (`id_penjualan`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+-- ----------------------------
+-- Records of penjualan
+-- ----------------------------
+INSERT INTO `penjualan` VALUES ('1', 'rm-09', 'Redmi 9', '2500000', '2500000', '', 'test', '3', 'cash', '2021-06-26', null, null);
+INSERT INTO `penjualan` VALUES ('2', 'ipx10', 'Iphone x', '12000000', '12000000', 'test', 'Endra', '3', 'cash', '2021-06-27', null, null);
+INSERT INTO `penjualan` VALUES ('3', 'ipxpro10', 'Iphone Pro Max', '15000000', '15000000', 'test', 'Endra', '3', 'transfer', '2021-06-27', null, null);
 
 -- ----------------------------
 -- Table structure for `penjualan_tmp`
@@ -143,10 +173,10 @@ CREATE TABLE `penjualan_tmp` (
   `harga_beli` bigint DEFAULT NULL,
   `harga_jual` bigint DEFAULT NULL,
   `tanggal` datetime DEFAULT NULL,
-  `kode_pembelian` bigint DEFAULT NULL,
-  `uang_muka` bigint DEFAULT NULL,
+  `no_telpn` varchar(255) DEFAULT NULL,
+  `alamat` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_penjualan_tmp`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of penjualan_tmp
@@ -162,7 +192,7 @@ CREATE TABLE `saldo_awal` (
   `nominal` bigint DEFAULT NULL,
   `keterangan` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of saldo_awal
@@ -189,7 +219,7 @@ CREATE TABLE `service` (
   `tanggal_jadi` date DEFAULT NULL,
   `tanggal_diambil` date DEFAULT NULL,
   PRIMARY KEY (`id_service`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of service
@@ -205,7 +235,7 @@ CREATE TABLE `service_part` (
   `biaya` bigint DEFAULT NULL,
   `nama_part` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_part`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of service_part
@@ -221,7 +251,7 @@ CREATE TABLE `service_software` (
   `biaya` bigint DEFAULT NULL,
   `nama_software` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_software`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of service_software
@@ -236,14 +266,14 @@ CREATE TABLE `user` (
   `username` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `nama` varchar(255) DEFAULT NULL,
-  `no_telp` varchar(255) CHARACTER SET utf8 COLLATE utf8_0900_ai_ci DEFAULT NULL,
+  `no_telp` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `alamat` text,
   `level` enum('admin','teknisi','penjual') DEFAULT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'endra1@mail.com', '$2y$10$qD3lTQbquHaeoXthhiA97ONPikLe.cmthFYNVx3rX1HqNndi/oFbO', 'Endra1', '01234561', 'camiles1', 'penjual');
-INSERT INTO `user` VALUES ('2', 'test@mail.com', '$2y$10$wyntgtauQyGOHE3shqWdtur4KWODHNvS8QFlBSPMlhFk0daZ3kLy.', 'test', '132', 'asd', 'admin');
+INSERT INTO `user` VALUES ('3', 'admin@mail.com', '$2y$10$PCKSJhKnjmkhE/JMvuREP.800eYczbczB874/G.8n/phR23TDkziO', 'admin', '098', 'bantul', 'admin');
+INSERT INTO `user` VALUES ('4', 'penjual@mail.com', '$2y$10$tvt6qKjcCd.3WqjxY7cu0uOQzEKdGGugB/xFC1aKQQf3OV7EFIe1i', 'penjual', '087', 'bantul', 'penjual');
