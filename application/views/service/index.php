@@ -46,7 +46,7 @@
                                 ?>
                                 <tr>
                                     <td><?php echo $no ?></td>
-                                    <td><?php echo $item['nama_customer'] ?></td>
+                                    <td><?php echo $item['id_customer'] ?></td>
                                     <td><?php echo $item['alamat'] ?></td>
                                     <td><?php echo $item['no_telpn'] ?></td>
                                     <td><?php echo $item['tanggal_masuk'] ?></td>

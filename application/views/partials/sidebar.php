@@ -36,9 +36,7 @@
                 <li class="submenu-item ">
                     <a href="<?php echo site_url('Pemasukan') ?>">Pemasukan &#10003;</a>
                 </li>
-                <li class="submenu-item ">
-                    <a href=<?php echo site_url('gaji') ?>>Penggajian</a>
-                </li>
+               
             </ul>
         </li>
         <li class="sidebar-item  has-sub">
@@ -53,12 +51,7 @@
                 <li class="submenu-item ">
                     <a href="<?php echo site_url('Laporan_penjualan') ?>">Data Penjualan &#10003;</a>
                 </li>
-                <li class="submenu-item ">
-                    <a href="<?php echo site_url('Laporan_laba_rugi/harian') ?>">Laporan Laba Rugi (harian)</a>
-                </li>
-                <li class="submenu-item ">
-                    <a href="<?php echo site_url('laporan_laba_rugi/bulanan') ?>">Laporan Laba Rugi (bulanan)</a>
-                </li>
+               
             </ul>
         </li>
         <li class="sidebar-item  has-sub">
@@ -70,6 +63,7 @@
                 <li class="submenu-item ">
                     <a href=<?php echo site_url('Barang') ?>>Data Barang &#10003;</a>
                     <a href=<?php echo site_url('user') ?>>Data Pengguna &#10003;</a>
+                    
                 </li>
             </ul>
         </li>

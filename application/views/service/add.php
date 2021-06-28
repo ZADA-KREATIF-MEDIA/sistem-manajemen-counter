@@ -30,8 +30,8 @@
                             <input type="hidden" name="id_teknisi" value="<?php echo $this->session->userdata('id_user');?>">
                         </div>
                         <div class="form-group">
-                            <label for="nama_customer">Nama Customer</label>
-                            <input type="text" class="form-control" name="nama_customer" id="nama_customer" placeholder="Masukkan Nama Customer" required="">
+                            <label for="id_customer">Nama Customer</label>
+                            <input type="text" class="form-control" name="id_customer" id="id_customer" placeholder="Masukkan Nama Customer" required="">
                         </div>
                         <div class="form-group">
                             <label for="alamat">Alamat</label>

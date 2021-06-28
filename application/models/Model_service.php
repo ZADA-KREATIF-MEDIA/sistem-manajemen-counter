@@ -11,7 +11,7 @@ Class Model_service extends CI_Model{
 
     public function biaya()
     {
-        $this->db->select('service.id_service,service.nama_customer,service.alamat,service.no_telpn,service.tanggal_masuk,service.tanggal_jadi,service.status')
+        $this->db->select('service.id_service,service.id_customer,service.alamat,service.no_telpn,service.tanggal_masuk,service.tanggal_jadi,service.status')
             ->from('service');
         $query = $this->db->get()->result_array();
         $i=0;
