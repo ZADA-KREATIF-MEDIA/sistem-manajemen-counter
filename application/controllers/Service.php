@@ -13,7 +13,6 @@ class Service extends CI_Controller
         $data['service']    = $this->mod->show_service();
         $data['biaya']      = $this->mod->biaya();
         $data['part']       = $this->mod->show_part();
-        // print('<pre>');print_r($data);exit();
         $this->template->load('template','service/index',$data);
     }
 
@@ -29,7 +28,7 @@ class Service extends CI_Controller
         $post = [
             "nama_customer"     => $this->input->post('nama_customer', TRUE),
             "alamat"            => $this->input->post('alamat', TRUE),
-            "no_telpn"           => $this->input->post('no_tlpn', TRUE),
+            "no_telpn"          => $this->input->post('no_tlpn', TRUE),
             "nama_barang"       => $this->input->post('nama_barang', TRUE),
             "tipe"              => $this->input->post('tipe', TRUE),
             "imei"              => $this->input->post('imei', TRUE),
@@ -40,9 +39,15 @@ class Service extends CI_Controller
             "tanggal_masuk"     => $date_in_sql,
             "tanggal_jadi"      => $date_out_sql
         ];
-        // print('<pre>');print_r($post);exit();
+        $post_customer = [
+            'nama'          => $this->input->post('nama_customer',true),
+            'alamat'        => $this->input->post('alamat', true),
+            'no_telpn'      => $this->input->post('no_tlpn', true),
+            'tgl_daftar'    => date('Y-m-d'),
+            'imei'          => $this->input->post('imei', true)      
+        ];
+        $this->mod->m_store_customer($post_customer);
         $last_id = $this->mod->m_store_part1($post);
-        
         $part_hw    = $this->input->post('part_hw', TRUE);
         $new_hw     = str_replace(".","", $this->input->post('harga_part_hw', TRUE));
         $part_sw    = $this->input->post('part_sw', TRUE);
@@ -67,6 +72,7 @@ class Service extends CI_Controller
             }
             $this->mod->m_store_software($data_sw);
         }
+
 		redirect(site_url('service'));
     }
 

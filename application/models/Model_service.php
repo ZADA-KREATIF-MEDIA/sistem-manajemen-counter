@@ -6,12 +6,11 @@ Class Model_service extends CI_Model{
     {
         $data=$this->db->get('service')->result_array();
         return $data;
-        
     }
 
     public function biaya()
     {
-        $this->db->select('service.id_service,service.id_customer,service.alamat,service.no_telpn,service.tanggal_masuk,service.tanggal_jadi,service.status')
+        $this->db->select('service.id_service,service.nama_customer,service.alamat,service.no_telpn,service.tanggal_masuk,service.tanggal_jadi,service.status')
             ->from('service');
         $query = $this->db->get()->result_array();
         $i=0;
@@ -28,7 +27,11 @@ Class Model_service extends CI_Model{
             $data['biaya_software'][$i]	= $this->db->query($hasil['biaya_software'][$i])->row();
             $i++;
         }
-        return $data;
+        if($query){
+            return $data;
+        } else {
+            return 0;
+        }
     }
 
     public function show_jenis()
@@ -236,4 +239,9 @@ Class Model_service extends CI_Model{
         return $data;
     }
 
+    public function m_store_customer($post_customer)
+    {
+        $this->db->insert('customer', $post_customer);
+        return true;
+    }
 }

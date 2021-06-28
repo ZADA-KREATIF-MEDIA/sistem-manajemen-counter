@@ -12,7 +12,7 @@
                     Tambah Data Service
                 </div>
                 <?php echo form_open('service/store') ?>
-                <div class="card-body row">
+                <div class="card-body row px-0">
                     <div class="col-md-8">
                         <div class="form-group row">
                             <div class="col-lg-6">
@@ -30,8 +30,8 @@
                             <input type="hidden" name="id_teknisi" value="<?php echo $this->session->userdata('id_user');?>">
                         </div>
                         <div class="form-group">
-                            <label for="id_customer">Nama Customer</label>
-                            <input type="text" class="form-control" name="id_customer" id="id_customer" placeholder="Masukkan Nama Customer" required="">
+                            <label for="nama_customer">Nama Customer</label>
+                            <input type="text" class="form-control" name="nama_customer" id="nama_customer" placeholder="Masukkan Nama Customer" required="">
                         </div>
                         <div class="form-group">
                             <label for="alamat">Alamat</label>
@@ -103,7 +103,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-footer bg-transparent">
+                <div class="card-footer bg-transparent px-0">
                     <button type="submit" name="submit" class="btn btn-primary">
                         Simpan
                     </button>
@@ -114,50 +114,3 @@
         </div>
     </div>
 </div>
-<script>
-    var id = 1;
-	function addHW(){
-		id += 1;
-		var item = '<div id="hapusHW_'+id+'" class="border border-bottom pt-3">'+
-			 		    '<div class="form-group">'+
-			 			    '<label for="part_hw">Nama Part Hardware</label>'+
-			 			    '<input type="text" class="form-control" name="part_hw[]" id="part_hw" placeholder="Masukkan Nama Hardware">'+
-			 		    '</div>'+
-                        '<div class="form-group">'+
-                            '<label for="harga_part_hw">Harga Part SoftWare</label>'+
-                            '<input type="text" class="form-control uang" name="harga_part_hw[]" id="harga_part_hw" placeholder="Masukkan Harga">'+
-                        '</div>'+
-                        '<div>'+
-                            '<button class="btn-danger btn-sm btn-block" type="button" onclick="deleteHW('+id+')">Hapus'+
-                            '</button>'+
-                        '</div>'+
-			 		'</div>';
-		$('#hardware').append(item);
-    }
-    function deleteHW(id){
-		$("#hapusHW_"+id).remove();
-	}
-
-    function addSW(){
-		id += 1;
-		var item = '<div id="hapusSW_'+id+'" class="border border-bottom pt-3">'+
-			 		    '<div class="form-group">'+
-			 			    '<label for="part_sw">Nama Part Software</label>'+
-			 			    '<input type="text" class="form-control" name="part_sw[]" id="part_sw" placeholder="Masukkan Nama Software">'+
-			 		    '</div>'+
-                        '<div class="form-group">'+
-                            '<label for="harga_part_sw">Harga Part</label>'+
-                            '<input type="text" class="form-control uang" name="harga_part_sw[]" id="harga_part_sw" placeholder="Masukkan Harga">'+
-                        '</div>'+
-                        '<div>'+
-                            '<button class="btn-danger btn-sm btn-block" type="button" onclick="deleteSW('+id+')">Hapus'+
-                            '</button>'+
-                        '</div>'+
-			 		'</div>';
-		$('#software').append(item);
-    }
-    
-    function deleteSW(id){
-		$("#hapusSW_"+id).remove();
-	}
-</script>

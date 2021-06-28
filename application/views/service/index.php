@@ -15,14 +15,15 @@
     <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="nav-service" role="tabpanel" aria-labelledby="nav-service-tab">
             <div class="card mb-3">
-                <div class="card-header">
-                DATA SERVICE
-                    <?php echo anchor('service/create','Tambah service',array('class'=>'btn btn-primary pull-right')) ?>
-                    <a href="<?php echo base_url();?>service/export_service" class="btn btn-success float-right mr-3 mb-2"><i class="fa fa-file-excel-o"></i> Export Excel</a>
+                <div class="card-header p-0 mb-2">
+                    <div class="float-end">
+                        <?php echo anchor('service/create','Tambah service',array('class'=>'btn btn-primary btn-sm')) ?>
+                        <a href="<?php echo base_url();?>service/export_service" class="btn btn-success btn-sm"><i class="fa fa-file-excel-o"></i>Export Excel</a>
+                    </div>
                 </div>
-                <div class="card-body table-responsive">
+                <div class="card-body table-responsive px-0">
                     <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <table class="table table-bordered" id="dataTable">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -46,7 +47,7 @@
                                 ?>
                                 <tr>
                                     <td><?php echo $no ?></td>
-                                    <td><?php echo $item['id_customer'] ?></td>
+                                    <td><?php echo $item['nama_customer'] ?></td>
                                     <td><?php echo $item['alamat'] ?></td>
                                     <td><?php echo $item['no_telpn'] ?></td>
                                     <td><?php echo $item['tanggal_masuk'] ?></td>
@@ -67,9 +68,6 @@
                                                 <?php endif;?>
                                             </div>
                                         </div>
-                                        <!-- <a href="<?php echo base_url(); ?>service/edit/<?php echo $item->id_service; ?>" class="btn btn-info" title="Edit"><i class="fa fa-edit"></i></a> -->
-                                        <!-- <a href="<?php echo base_url(); ?>service/show/<?php echo $item->id_service; ?>" class="btn btn-dark" title="Detail"><i class="fa fa-eye"></i></a> -->
-                                        <!-- <a href="#" class="btn btn-danger" onclick="alertHapus(<?php echo $item->id_service; ?>)" title="Hapus"><i class="fa fa-trash"></i></a> -->
                                     </td>
                                 </tr>
                                 <?php $no++; $i++; ?>
@@ -130,37 +128,3 @@
         </div>
     </div>
 </div>
-<script src="<?php echo base_url(); ?>assets/vendor/sweetalert2/sweetalert2.all.min.js"></script>
-<script>
-    function ubahStatus(id)
-    {
-        console.log(id);
-        Swal.fire({
-        title: 'Apakah Anda Yakin?',
-        text: "Akan menghapus status menjadi sedang dikerjakan?",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Ya',
-        cancelButtonText : 'Tidak'
-        }).then((result) => {
-        if (result.value) {
-            $.ajax({
-                url     : "<?php echo base_url('service/ubah_status_pengerjaan'); ?>",
-                method  : "POST",
-                data    : {id_customer : id},
-                success:function(res){
-                    // console.log(res)
-                    Swal.fire(
-                        'Success!',
-                        'Status berhasil diubah.',
-                        'success'
-                    );
-                    location.reload();
-                }
-            })
-        }
-        })
-    }
-</script>

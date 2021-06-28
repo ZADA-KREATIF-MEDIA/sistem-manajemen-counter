@@ -19,6 +19,7 @@
   <link href="<?php echo base_url() ?>assets/css/app.css" rel="stylesheet">
   <link href="<?php echo base_url() ?>assets/vendors/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet">
   <link href="<?php echo base_url() ?>assets/vendors/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="<?php echo base_url() ?>assets_old/vendor/jquery-ui/jquery-ui.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -205,55 +206,6 @@
           );
         }
       });
-    }
-
-    function hapusPart(id) {
-      Swal.fire({
-        text: "Apakah anda yakin akan menghapus data part ini?",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#3085d6',
-        confirmButtonText: 'Ya',
-        cancelButtonText: 'Tidak'
-      }).then((result) => {
-        if (result.value) {
-          window.location.href = "<?php echo base_url(); ?>service/delete_part/" + id
-        }
-      })
-    }
-
-    function hapusService(id) {
-      // console.log(id);
-      Swal.fire({
-        title: 'Apakah Anda Yakin?',
-        text: "Akan menghapus data service customer?",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Ya',
-        cancelButtonText: 'Tidak'
-      }).then((result) => {
-        if (result.value) {
-          $.ajax({
-            url: "<?php echo base_url('service/delete'); ?>",
-            method: "POST",
-            data: {
-              id_customer: id
-            },
-            success: function(res) {
-              // console.log(res)
-              Swal.fire(
-                'Deleted!',
-                'Data customer berhasil di hapus.',
-                'success'
-              );
-              location.reload();
-            }
-          })
-        }
-      })
     }
     // Module Laporan Pembelian
     function alertHapus(id) {
@@ -538,6 +490,137 @@
         window.location.href = "<?php echo base_url(); ?>laporan_laba_rugi/export_harian"
       }
     }
+    <?php 
+      switch($this->uri->segment(1)):
+        case "service":
+    ?>
+      $(document).ready(function(){
+        $('#dataTable_wrapper').addClass('px-0');
+      })
+      function ubahStatus(id){
+        Swal.fire({
+        title: 'Apakah Anda Yakin?',
+        text: "Akan menghapus status menjadi sedang dikerjakan?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya',
+        cancelButtonText : 'Tidak'
+        }).then((result) => {
+        if (result.value) {
+            $.ajax({
+                url     : "<?php echo base_url('service/ubah_status_pengerjaan'); ?>",
+                method  : "POST",
+                data    : {id_customer : id},
+                success:function(res){
+                    // console.log(res)
+                    Swal.fire(
+                        'Success!',
+                        'Status berhasil diubah.',
+                        'success'
+                    );
+                    location.reload();
+                }
+            })
+        }
+        })
+      }   
+      function hapusPart(id) {
+        Swal.fire({
+          text: "Apakah anda yakin akan menghapus data part ini?",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#d33',
+          cancelButtonColor: '#3085d6',
+          confirmButtonText: 'Ya',
+          cancelButtonText: 'Tidak'
+        }).then((result) => {
+          if (result.value) {
+            window.location.href = "<?php echo base_url(); ?>service/delete_part/" + id
+          }
+        })
+      }
+      function hapusService(id) {
+        Swal.fire({
+          title: 'Apakah Anda Yakin?',
+          text: "Akan menghapus data service customer?",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Ya',
+          cancelButtonText: 'Tidak'
+        }).then((result) => {
+          if (result.value) {
+            $.ajax({
+              url: "<?php echo base_url('service/delete'); ?>",
+              method: "POST",
+              data: {
+                id_customer: id
+              },
+              success: function(res) {
+                // console.log(res)
+                Swal.fire(
+                  'Deleted!',
+                  'Data customer berhasil di hapus.',
+                  'success'
+                );
+                location.reload();
+              }
+            })
+          }
+        })
+      } 
+    <?php endswitch;?>
+    <?php
+      switch($this->uri->segment(2)):
+        case "create":
+    ?>
+      var id = 1;
+      function addHW(){
+        id += 1;
+        var item = '<div id="hapusHW_'+id+'" class="border border-bottom pt-3">'+
+                  '<div class="form-group">'+
+                    '<label for="part_hw">Nama Part Hardware</label>'+
+                    '<input type="text" class="form-control" name="part_hw[]" id="part_hw" placeholder="Masukkan Nama Hardware">'+
+                  '</div>'+
+                            '<div class="form-group">'+
+                                '<label for="harga_part_hw">Harga Part SoftWare</label>'+
+                                '<input type="text" class="form-control uang" name="harga_part_hw[]" id="harga_part_hw" placeholder="Masukkan Harga">'+
+                            '</div>'+
+                            '<div>'+
+                                '<button class="btn-danger btn-sm btn-block" type="button" onclick="deleteHW('+id+')">Hapus'+
+                                '</button>'+
+                            '</div>'+
+              '</div>';
+        $('#hardware').append(item);
+        }
+        function deleteHW(id){
+        $("#hapusHW_"+id).remove();
+      }
+      function addSW(){
+        id += 1;
+        var item = '<div id="hapusSW_'+id+'" class="border border-bottom pt-3">'+
+                  '<div class="form-group">'+
+                    '<label for="part_sw">Nama Part Software</label>'+
+                    '<input type="text" class="form-control" name="part_sw[]" id="part_sw" placeholder="Masukkan Nama Software">'+
+                  '</div>'+
+                            '<div class="form-group">'+
+                                '<label for="harga_part_sw">Harga Part</label>'+
+                                '<input type="text" class="form-control uang" name="harga_part_sw[]" id="harga_part_sw" placeholder="Masukkan Harga">'+
+                            '</div>'+
+                            '<div>'+
+                                '<button class="btn-danger btn-sm btn-block" type="button" onclick="deleteSW('+id+')">Hapus'+
+                                '</button>'+
+                            '</div>'+
+              '</div>';
+        $('#software').append(item);
+      }
+      function deleteSW(id){
+        $("#hapusSW_"+id).remove();
+      }
+    <?php endswitch;?>
     /*--------- Error & Success Handling ---------*/
     /* Modul Transaksi */
     <?php if (isset($_SESSION['msg']) && $_SESSION['msg'] == "tmp_kosong") : ?>
