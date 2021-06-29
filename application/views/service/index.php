@@ -9,15 +9,10 @@
     <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="nav-service" role="tabpanel" aria-labelledby="nav-service-tab">
             <div class="card mb-3">
-                <div class="card-header p-0 mb-2">
-                    <div class="float-end">
-                    </div>
-                </div>
                 <div class="card-body table-responsive px-0">
-                    <div class="card-body">
+                    <div class="card-body px-0">
                         <div class="alert alert-light-primary">
                             <?php echo anchor('service/create', 'Tambah Service', array('class' => 'btn btn-primary btn-sm')) ?>
-                            <a href="<?php echo base_url(); ?>service/export_service" class="btn btn-success btn-sm"><i class="fa fa-file-excel-o"></i>Export Excel</a>
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -55,7 +50,6 @@
                                         <td><?php echo number_format($total, 0, '.', '.') ?></td>
                                         <td class="text-center">
                                             <div class="btn-group">
-                                           
                                                 <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <span class="sr-only">Aksi</span>
                                                 </button>
@@ -80,13 +74,10 @@
         </div>
         <div class="tab-pane fade" id="nav-part" role="tabpanel" aria-labelledby="nav-part-tab">
             <div class="card mb-3">
-               
-    
-                <div class="card-body table-responsive">
-                <div class="alert alert-light-primary">
-                    <?php echo anchor('service/add_part', 'Tambah Part', array('class' => 'btn btn-primary  btn-sm')) ?>
-                    <a href="<?php echo base_url(); ?>service/export_part" class="btn btn-success  mr-3 mb-2 btn-sm"><i class="fa fa-file-excel-o"></i> Export Excel</a>
-                </div>
+                <div class="card-body table-responsive px-0">
+                    <div class="alert alert-light-primary">
+                        <?php echo anchor('service/add_part', 'Tambah Part', array('class' => 'btn btn-primary  btn-sm')) ?>
+                    </div>
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
@@ -113,8 +104,8 @@
                                         <td><?php echo $parts['tanggal']; ?></td>
                                         <td><?php echo $parts['nama']; ?></td>
                                         <td class="text-center">
-                                            <a href="<?php echo base_url(); ?>service/edit_part/<?php echo $parts['id']; ?>" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
-                                            <button class="btn btn-sm btn-danger" onclick="hapusPart(<?php echo $parts['id']; ?>)"><i class="fa fa-trash"></i></button>
+                                            <a href="<?php echo base_url(); ?>service/edit_part/<?php echo $parts['id']; ?>" class="btn btn-sm btn-primary">Edit</a>
+                                            <button class="btn btn-sm btn-danger" onclick="hapusPart(<?php echo $parts['id']; ?>)">Hapus</button>
                                         </td>
                                     </tr>
                                 <?php

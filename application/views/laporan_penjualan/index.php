@@ -2,15 +2,9 @@
     <div class="alert alert-light-primary">
         <h4 class="alert-heading">Data Penjualan Barang/Smartphone</h4>
         <p>Pada tabel di bawah merupakan data barang yang tersedia dalam toko.</p>
-        <hr>
-        <a href="<?php echo base_url(); ?>laporan_penjualan/export" class="btn btn-success btn-sm float-right mr-3 mb-2"><i class="fa fa-file-excel-o"></i> Export Excel</a>
     </div>
 </div>
-
-
-
-<div class="card-body">
-
+<div class="card-body py-0">
     <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
@@ -42,10 +36,6 @@
                         <td><?php echo $item->nama ?></td>
                         <td class="text-center">
                             <a href="<?php echo base_url() ?>laporan_penjualan/show_detail/<?php echo $item->imei; ?>" class="btn btn-dark btn-sm"><span>DETAIL</span></a><br>
-                            <?php if ($this->session->userdata('level') == "admin") : ?>
-                                <a href="<?php echo base_url() ?>laporan_penjualan/edit_detail/<?php echo $item->imei; ?>" class="btn btn-info btn-sm"><span>EDIT</span></a><br>
-                                <button class="btn btn-danger btn-sm" onclick="hapusLaporanPenjualan('<?php echo $item->id_penjualan; ?>')"><span>HAPUS</span></button>
-                            <?php endif; ?>
                         </td>
                     </tr>
                     <?php $no++;

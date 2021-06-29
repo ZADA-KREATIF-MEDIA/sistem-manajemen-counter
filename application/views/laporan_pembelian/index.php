@@ -1,12 +1,12 @@
-<div class="card-body">
+<div class="card-body py-0">
     <div class="alert alert-light-primary">
         <h4 class="alert-heading">Data Pembelian Barang/Smartphone</h4>
         <p>Pada tabel di bawah merupakan data barang yang tersedia dalam toko.</p>
-        <hr>
-        <a href="<?php echo base_url(); ?>laporan_pembelian/export" class="btn btn-success btn-sm float-right mr-3 mb-2"><i class="fa fa-file-excel-o"></i> Export Excel</a>
+        <!-- <hr>
+        <a href="<?php echo base_url(); ?>laporan_pembelian/export" class="btn btn-success btn-sm float-right mr-3 mb-2"><i class="fa fa-file-excel-o"></i> Export Excel</a> -->
     </div>
 </div>
-<div class="card-body">
+<div class="card-body px-0">
     <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
@@ -38,10 +38,6 @@
                         <td><?php echo $item->nama ?></td>
                         <td>
                             <a href="<?php echo base_url(); ?>laporan_pembelian/show/<?php echo $item->imei; ?>" class="btn btn-dark btn-sm" title="Detail"><span>DETAIL</span></a>
-                            <?php if ($this->session->userdata('level') == "admin") : ?>
-                                <!--<button class="btn btn-primary btn-sm" onclick="editPembelian(<?php echo $item->id; ?>)" data-toggle="modal"><span>EDIT</span></button>-->
-                                <a href="#" class="btn btn-danger btn-sm" onclick="alertHapus(<?php echo $item->id ?>)" title="Hapus"><span>HAPUS</span></a>
-                            <?php endif; ?>
                         </td>
                     </tr>
                     <?php $no++;

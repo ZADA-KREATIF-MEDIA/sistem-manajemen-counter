@@ -5,7 +5,7 @@
 <div class="card">
     <?php echo form_open('pemasukan/edit') ?>
     <?php echo form_hidden('id_pemasukan', $pemasukan['id_pemasukan']) ?>
-    <div class="card-body">
+    <div class="card-body px-0">
         <div class="form-group">
             <label for="nama_bencana">Tanggal</label>
             <input type="text" value="<?php echo $pemasukan['tanggal'] ?>" class="form-control datepicker" name="tanggal" required="">
@@ -20,10 +20,10 @@
         </div>
         <div class="form-group">
             <label for="keterangan">Keterangan</label>
-            <textarea name="keterangan" cols="30" rows="10" class="form-control"><?php echo $pemasukan['keterangan'] ?></textarea>
+            <textarea name="keterangan" class="form-control"><?php echo $pemasukan['keterangan'] ?></textarea>
         </div>
     </div>
-    <div class="card-footer bg-transparent">
+    <div class="card-footer bg-transparent px-0">
         <button type="submit" name="submit" class="btn btn-success">
             Simpan
         </button>

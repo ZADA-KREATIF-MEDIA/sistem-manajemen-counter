@@ -207,37 +207,6 @@
         }
       });
     }
-    // Module Laporan Pembelian
-    function alertHapus(id) {
-      Swal.fire({
-        title: 'Apakah Anda Yakin?',
-        text: "Akan menghapus data laporan pembelian?",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Ya',
-        cancelButtonText: 'Tidak'
-      }).then((result) => {
-        if (result.value) {
-          $.ajax({
-            url: "<?php echo base_url('Laporan_pembelian/hapus'); ?>",
-            method: "POST",
-            data: {
-              kode_pembelian: id
-            },
-            success: function(res) {
-              Swal.fire(
-                'Deleted!',
-                'Data laporan pembelian berhasil di hapus.',
-                'success'
-              );
-              location.reload();
-            }
-          })
-        }
-      })
-    }
 
     function editPembelian(id) {
       $.ajax({
@@ -275,37 +244,6 @@
         $("#blockTanggalJatuhTempo").addClass('d-none');
       }
     });
-    // Module Laporan Penjualan 
-    function hapusLaporanPenjualan(id) {
-      Swal.fire({
-        title: 'Apakah Anda Yakin',
-        text: "Akan menghapus data laporan penjualan?",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Ya',
-        cancelButtonText: 'Tidak'
-      }).then((result) => {
-        if (result.value) {
-          $.ajax({
-            url: "<?php echo base_url('Laporan_penjualan/hapus'); ?>",
-            method: "POST",
-            data: {
-              id: id
-            },
-            success: function(res) {
-              Swal.fire(
-                'Deleted!',
-                'Data laporan penjualan berhasil di hapus.',
-                'success'
-              );
-              location.reload();
-            }
-          })
-        }
-      })
-    }
     // Module Barang 
     function ubahInStock(id) {
       Swal.fire({
@@ -366,129 +304,6 @@
           });
         }
       })
-    }
-    // Module Pemasukan 
-    function hapusPemasukan(id) {
-      Swal.fire({
-        text: "Apakah anda yakin akan menghapus data pemasukan?",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#3085d6',
-        confirmButtonText: 'Ya',
-        cancelButtonText: 'Tidak'
-      }).then((result) => {
-        if (result.value) {
-          $.ajax({
-            url: "<?php echo base_url('pemasukan/hapus'); ?>",
-            method: "POST",
-            data: {
-              id: id
-            },
-            success: function(res) {
-              Swal.fire(
-                'Deleted!',
-                'Barang berhasil di hapus.',
-                'success'
-              );
-              location.reload();
-            }
-          });
-        }
-      })
-    }
-    // Module Pengeluaran 
-    function hapusPengeluaran(id) {
-      Swal.fire({
-        text: "Apakah anda yakin akan menghapus data pengeluaran?",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#3085d6',
-        confirmButtonText: 'Ya',
-        cancelButtonText: 'Tidak'
-      }).then((result) => {
-        if (result.value) {
-          $.ajax({
-            url: "<?php echo base_url('pengeluaran/hapus'); ?>",
-            method: "POST",
-            data: {
-              id: id
-            },
-            success: function(res) {
-              Swal.fire(
-                'Deleted!',
-                'Barang berhasil di hapus.',
-                'success'
-              );
-              location.reload();
-            }
-          });
-        }
-      })
-    }
-    // Module Gaji 
-    function hapusGaji(id) {
-      Swal.fire({
-        text: "Apakah anda yakin akan menghapus data gaji?",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#3085d6',
-        confirmButtonText: 'Ya',
-        cancelButtonText: 'Tidak'
-      }).then((result) => {
-        if (result.value) {
-          $.ajax({
-            url: "<?php echo base_url('gaji/hapus'); ?>",
-            method: "POST",
-            data: {
-              id: id
-            },
-            success: function(res) {
-              Swal.fire(
-                'Deleted!',
-                'Barang berhasil di hapus.',
-                'success'
-              );
-              location.reload();
-            }
-          });
-        }
-      })
-    }
-    // Module Saldo Awal
-    function hapusSaldoAwal(id) {
-      Swal.fire({
-        text: "Anda yakin akan menghapus data saldo awal?",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#3085d6',
-        confirmButtonText: 'Ya',
-        cancelButtonText: 'Tidak'
-      }).then((result) => {
-        if (result.value) {
-          window.location.href = "<?php echo base_url(); ?>saldo_awal/destroy/" + id
-        }
-      })
-    }
-
-    // Modul Export Excel Laporan Bulanan & Harian
-    function exportExcelBulanan(tanggal) {
-      if (tanggal != 0) {
-        window.location.href = "<?php echo base_url(); ?>laporan_laba_rugi/export_bulanan/" + tanggal
-      } else {
-        window.location.href = "<?php echo base_url(); ?>laporan_laba_rugi/export_bulanan"
-      }
-    }
-
-    function exportExcelHarian(hari) {
-      if (hari != 0) {
-        window.location.href = "<?php echo base_url(); ?>laporan_laba_rugi/export_harian/" + hari
-      } else {
-        window.location.href = "<?php echo base_url(); ?>laporan_laba_rugi/export_harian"
-      }
     }
     <?php 
       switch($this->uri->segment(1)):
@@ -572,6 +387,131 @@
           }
         })
       } 
+    <?php case "Pengeluaran": ?>
+      // Module Pengeluaran 
+      function hapusPengeluaran(id) {
+        Swal.fire({
+          text: "Apakah anda yakin akan menghapus data pengeluaran?",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#d33',
+          cancelButtonColor: '#3085d6',
+          confirmButtonText: 'Ya',
+          cancelButtonText: 'Tidak'
+        }).then((result) => {
+          if (result.value) {
+            $.ajax({
+              url: "<?php echo base_url('pengeluaran/hapus'); ?>",
+              method: "POST",
+              data: {
+                id: id
+              },
+              success: function(res) {
+                Swal.fire(
+                  'Deleted!',
+                  'Barang berhasil di hapus.',
+                  'success'
+                );
+                location.reload();
+              }
+            });
+          }
+        })
+      }
+      <?php if (isset($_SESSION['msg']) && $_SESSION['msg'] == "tambah pengeluaran") : ?>
+        Swal.fire({
+          text: "Berhasil Menambahkan Data Pengeluaran",
+          icon: 'success',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'OK'
+        }).then((result) => {
+          if (result.value) {
+            <?php unset($_SESSION['msg']); ?>
+          }
+        });
+      <?php endif; ?>
+      <?php if (isset($_SESSION['msg']) && $_SESSION['msg'] == "edit pengeluaran") : ?>
+        Swal.fire({
+          text: "Berhasil Edit Data Pengeluaran",
+          icon: 'success',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'OK'
+        }).then((result) => {
+          if (result.value) {
+            <?php unset($_SESSION['msg']); ?>
+          }
+        });
+      <?php endif; ?>
+    <?php case "pemasukan": ?>
+      // Module Pemasukan 
+      $(document).ready(function(){
+        $('#dataTable_wrapper').addClass('px-0');
+      })
+      function hapusPemasukan(id) {
+        Swal.fire({
+          text: "Apakah anda yakin akan menghapus data pemasukan?",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#d33',
+          cancelButtonColor: '#3085d6',
+          confirmButtonText: 'Ya',
+          cancelButtonText: 'Tidak'
+        }).then((result) => {
+          if (result.value) {
+            $.ajax({
+              url: "<?php echo base_url('pemasukan/hapus'); ?>",
+              method: "POST",
+              data: {
+                id: id
+              },
+              success: function(res) {
+                Swal.fire(
+                  'Deleted!',
+                  'Barang berhasil di hapus.',
+                  'success'
+                );
+                location.reload();
+              }
+            });
+          }
+        })
+      }
+      <?php if (isset($_SESSION['msg']) && $_SESSION['msg'] == "pemasukan success") : ?>
+        Swal.fire({
+          text: "Berhasil Menambahkan Data Pemasukan",
+          icon: 'success',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'OK'
+        }).then((result) => {
+          if (result.value) {
+            <?php unset($_SESSION['msg']); ?>
+          }
+        });
+      <?php endif; ?>
+      <?php if (isset($_SESSION['msg']) && $_SESSION['msg'] == "edit pemasukan success") : ?>
+        Swal.fire({
+          text: "Berhasil Edit Data Pemasukan",
+          icon: 'success',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'OK'
+        }).then((result) => {
+          if (result.value) {
+            <?php unset($_SESSION['msg']); ?>
+          }
+        });
+        <?php endif; ?>
+    <?php case "Laporan_penjualan": ?>
+      $(document).ready(function(){
+        $('#dataTable_wrapper').addClass('px-0');
+      });
     <?php endswitch;?>
     <?php
       switch($this->uri->segment(2)):
@@ -669,123 +609,6 @@
     <?php if (isset($_SESSION['msg']) && $_SESSION['msg'] == "pembelian sukses") : ?>
       Swal.fire({
         text: "Transaksi Pembelian Berhasil",
-        icon: 'success',
-        showCancelButton: false,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'OK'
-      }).then((result) => {
-        if (result.value) {
-          <?php unset($_SESSION['msg']); ?>
-        }
-      });
-    <?php endif; ?>
-    /* Modul Laporan Pembelian */
-    <?php if (isset($_SESSION['msg']) && $_SESSION['msg'] == "edit laporan pembelian berhasil") : ?>
-      Swal.fire({
-        text: "Edit Data Laporan Pembelian Berhasil",
-        icon: 'success',
-        showCancelButton: false,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'OK'
-      }).then((result) => {
-        if (result.value) {
-          <?php unset($_SESSION['msg']); ?>
-        }
-      });
-    <?php endif; ?>
-    /* Modul Laporan Penjualan */
-    <?php if (isset($_SESSION['msg']) && $_SESSION['msg'] == "edit laporan penjualan berhasil") : ?>
-      Swal.fire({
-        text: "Edit Data Laporan Penjualan Berhasil",
-        icon: 'success',
-        showCancelButton: false,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'OK'
-      }).then((result) => {
-        if (result.value) {
-          <?php unset($_SESSION['msg']); ?>
-        }
-      });
-    <?php endif; ?>
-    /* Modul Pemasukan */
-    <?php if (isset($_SESSION['msg']) && $_SESSION['msg'] == "pemasukan success") : ?>
-      Swal.fire({
-        text: "Berhasil Menambahkan Data Pemasukan",
-        icon: 'success',
-        showCancelButton: false,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'OK'
-      }).then((result) => {
-        if (result.value) {
-          <?php unset($_SESSION['msg']); ?>
-        }
-      });
-    <?php endif; ?>
-    <?php if (isset($_SESSION['msg']) && $_SESSION['msg'] == "edit pemasukan success") : ?>
-      Swal.fire({
-        text: "Berhasil Edit Data Pemasukan",
-        icon: 'success',
-        showCancelButton: false,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'OK'
-      }).then((result) => {
-        if (result.value) {
-          <?php unset($_SESSION['msg']); ?>
-        }
-      });
-    <?php endif; ?>
-    /* Modul Pengeluaran */
-    <?php if (isset($_SESSION['msg']) && $_SESSION['msg'] == "tambah pengeluaran") : ?>
-      Swal.fire({
-        text: "Berhasil Menambahkan Data Pengeluaran",
-        icon: 'success',
-        showCancelButton: false,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'OK'
-      }).then((result) => {
-        if (result.value) {
-          <?php unset($_SESSION['msg']); ?>
-        }
-      });
-    <?php endif; ?>
-    <?php if (isset($_SESSION['msg']) && $_SESSION['msg'] == "edit pengeluaran") : ?>
-      Swal.fire({
-        text: "Berhasil Edit Data Pengeluaran",
-        icon: 'success',
-        showCancelButton: false,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'OK'
-      }).then((result) => {
-        if (result.value) {
-          <?php unset($_SESSION['msg']); ?>
-        }
-      });
-    <?php endif; ?>
-    /* Modul Gaji */
-    <?php if (isset($_SESSION['msg']) && $_SESSION['msg'] == "tambah gaji") : ?>
-      Swal.fire({
-        text: "Berhasil Menambahkan Data Gaji",
-        icon: 'success',
-        showCancelButton: false,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'OK'
-      }).then((result) => {
-        if (result.value) {
-          <?php unset($_SESSION['msg']); ?>
-        }
-      });
-    <?php endif; ?>
-    <?php if (isset($_SESSION['msg']) && $_SESSION['msg'] == "edit gaji") : ?>
-      Swal.fire({
-        text: "Berhasil Edit Data Gaji",
         icon: 'success',
         showCancelButton: false,
         confirmButtonColor: '#3085d6',

@@ -1,4 +1,4 @@
-<div class="card-body">
+<div class="card-body py-0">
     <div class="alert alert-light-primary">
         <h4 class="alert-heading">Data Pemasukan Toko</h4>
         <p>Pada tabel di bawah merupakan data barang yang tersedia dalam toko.</p>
@@ -31,9 +31,7 @@
                         <td><?php echo $item->keterangan ?></td>
                         <td class="d-inline-flex">
                             <a href="<?php echo site_url('pemasukan/edit/' . $item->id_pemasukan) ?>" class="btn btn-sm btn-primary"> <span>EDIT</span></a>&nbsp;
-                            <!-- <?php echo form_open('pemasukan/hapus/' . $item->id_pemasukan) ?> -->
                             <button type="button" class="btn btn-sm btn-danger" onclick="hapusPemasukan(<?php echo $item->id_pemasukan; ?>)"><span>HAPUS</span></button>
-                            <!-- <?php echo form_close() ?> -->
                         </td>
                     </tr>
                     <?php $no++ ?>

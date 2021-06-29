@@ -56,18 +56,10 @@
                     </tr>
                   </tbody>
                 </table>
-                <div class="card-footer bg-transparent">
-                    <!-- <button type="submit" name="submit" class="btn btn-primary">
-                        Submit
-                    </button> -->
-                    <!--<a href="<?php echo base_url(''); ?>laporan_pembelian/print/<?php echo $detail->id_customer; ?>" class="btn btn-success" title="print"><i class="fa fa-print"></i>&nbsp;PRINT</a>-->
+                <div class="card-footer bg-transparent px-0">
                   <a href="<?php echo site_url('laporan_pembelian') ?>" class="btn btn-info">Kembali</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<script>
-    var id = 1;
-	
-</script>

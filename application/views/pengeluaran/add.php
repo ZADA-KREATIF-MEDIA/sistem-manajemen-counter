@@ -3,9 +3,9 @@
         <h4 class="alert-heading">Formulir Data Pengeluaran Toko</h4>
         <hr>
     </div>
-    <div class="card-body">
+    <div class="card-body px-0">
         <?php echo form_open('Pengeluaran/tambah') ?>
-        <div class="card-body">
+        <div class="card-body px-0">
             <div class="form-group">
                 <label for="foto">Tanggal</label>
                 <input type="text" name="tanggal" class="form-control datepicker" requred="">
@@ -23,7 +23,7 @@
                 <textarea name="keterangan" cols="30" rows="10" class="form-control"></textarea>
             </div>
         </div>
-        <div class="card-footer bg-transparent">
+        <div class="card-footer bg-transparent px-0">
             <button type="submit" name="submit" class="btn btn-success">
                 Simpan
             </button>

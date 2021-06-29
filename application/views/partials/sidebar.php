@@ -39,9 +39,8 @@
                     <a href="<?php echo site_url('Pengeluaran') ?>">Pengeluaran</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="<?php echo site_url('Pemasukan') ?>">Pemasukan</a>
+                    <a href="<?php echo site_url('pemasukan') ?>">Pemasukan</a>
                 </li>
-               
             </ul>
         </li>
         <?php endif;?>

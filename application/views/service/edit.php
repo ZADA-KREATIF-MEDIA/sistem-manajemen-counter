@@ -42,8 +42,8 @@
                             <div class="col form-group">
                                 <label for="status">Status Pengerjaan</label>
                                 <select name="status" id="status" class="form-control">
-                                    <option value="baru masuk" <?php if($detail->status == "baru masuk"){ echo "selected"; }?>>Baru Masuk</option>
-                                    <option value="sedang dikerjakan" <?php if($detail->status == "sedang dikerjakan"){ echo "selected"; }?>>Sedang Dikerjakan</option>
+                                    <option value="diterima" <?php if($detail->status == "diterima"){ echo "selected"; }?>>Baru Masuk</option>
+                                    <option value="dikerjakan" <?php if($detail->status == "dikerjakan"){ echo "selected"; }?>>Sedang Dikerjakan</option>
                                     <option value="selesai" <?php if($detail->status == "selesai"){ echo"selected"; }?>>Selesai</option>
                                 </select>
                             </div>
