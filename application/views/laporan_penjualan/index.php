@@ -41,10 +41,10 @@
                         <td><?php echo number_format($item->harga_jual, 0, '.', '.') ?></td>
                         <td><?php echo $item->nama ?></td>
                         <td class="text-center">
-                            <a href="<?php echo base_url() ?>laporan_penjualan/show_detail/<?php echo $item->imei; ?>" class="btn btn-dark btn-sm"><i class="fa fa-eye"></i></a>
+                            <a href="<?php echo base_url() ?>laporan_penjualan/show_detail/<?php echo $item->imei; ?>" class="btn btn-dark btn-sm"><span>DETAIL</span></a><br>
                             <?php if ($this->session->userdata('level') == "admin") : ?>
-                                <a href="<?php echo base_url() ?>laporan_penjualan/edit_detail/<?php echo $item->imei; ?>" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
-                                <button class="btn btn-danger btn-sm" onclick="hapusLaporanPenjualan('<?php echo $item->id_penjualan; ?>')"><i class="fa fa-trash"></i></button>
+                                <a href="<?php echo base_url() ?>laporan_penjualan/edit_detail/<?php echo $item->imei; ?>" class="btn btn-info btn-sm"><span>EDIT</span></a><br>
+                                <button class="btn btn-danger btn-sm" onclick="hapusLaporanPenjualan('<?php echo $item->id_penjualan; ?>')"><span>HAPUS</span></button>
                             <?php endif; ?>
                         </td>
                     </tr>
@@ -56,13 +56,13 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="3" class="bg-danger text-white">
+                    <td colspan="3">
                         <h6>Total Penjualan Rp. <?= number_format($total, 0, '.', '.') ?></h6>
                     </td>
-                    <td colspan="3" class="bg-success text-white">
+                    <td colspan="3">
                         <h6>Total Pembelian Rp. <?= number_format($beli, 0, '.', '.') ?></h6>
                     </td>
-                    <td colspan="4" class="bg-dark text-white">
+                    <td colspan="4">
                         <h6>(Penjualan - Pembelian) Rp. <?= number_format($total - $beli, 0, '.', '.') ?></h6>
                     </td>
                 </tr>

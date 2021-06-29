@@ -39,7 +39,7 @@
                         <td>
                             <a href="<?php echo base_url(); ?>laporan_pembelian/show/<?php echo $item->imei; ?>" class="btn btn-dark btn-sm" title="Detail"><span>DETAIL</span></a>
                             <?php if ($this->session->userdata('level') == "admin") : ?>
-                                <button class="btn btn-primary btn-sm" onclick="editPembelian(<?php echo $item->id; ?>)" data-toggle="modal"><span>EDIT</span></button>
+                                <!--<button class="btn btn-primary btn-sm" onclick="editPembelian(<?php echo $item->id; ?>)" data-toggle="modal"><span>EDIT</span></button>-->
                                 <a href="#" class="btn btn-danger btn-sm" onclick="alertHapus(<?php echo $item->id ?>)" title="Hapus"><span>HAPUS</span></a>
                             <?php endif; ?>
                         </td>

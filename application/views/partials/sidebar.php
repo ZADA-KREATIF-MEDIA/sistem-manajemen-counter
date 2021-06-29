@@ -17,10 +17,10 @@
                     <a href="<?php echo site_url('Service') ?>">Service Smartphone</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="<?php echo site_url('Transaksi') ?>">Penjualan Smartphone &#10003;</a>
+                    <a href="<?php echo site_url('Transaksi') ?>">Penjualan Smartphone</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href=<?php echo site_url('Pembelian') ?>>Pembelian Smartphone &#10003;</a>
+                    <a href=<?php echo site_url('Pembelian') ?>>Pembelian Smartphone</a>
                 </li>
             </ul>
         </li>
@@ -31,10 +31,10 @@
             </a>
             <ul class="submenu ">
                 <li class="submenu-item ">
-                    <a href="<?php echo site_url('Pengeluaran') ?>">Pengeluaran &#10003;</a>
+                    <a href="<?php echo site_url('Pengeluaran') ?>">Pengeluaran</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="<?php echo site_url('Pemasukan') ?>">Pemasukan &#10003;</a>
+                    <a href="<?php echo site_url('Pemasukan') ?>">Pemasukan</a>
                 </li>
                
             </ul>
@@ -46,10 +46,10 @@
             </a>
             <ul class="submenu ">
                 <li class="submenu-item ">
-                    <a href="<?php echo site_url('Laporan_pembelian') ?>">Data Pembelian &#10003;</a>
+                    <a href="<?php echo site_url('Laporan_pembelian') ?>">Data Pembelian</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="<?php echo site_url('Laporan_penjualan') ?>">Data Penjualan &#10003;</a>
+                    <a href="<?php echo site_url('Laporan_penjualan') ?>">Data Penjualan</a>
                 </li>
                
             </ul>
@@ -61,8 +61,8 @@
             </a>
             <ul class="submenu ">
                 <li class="submenu-item ">
-                    <a href=<?php echo site_url('Barang') ?>>Data Barang &#10003;</a>
-                    <a href=<?php echo site_url('user') ?>>Data Pengguna &#10003;</a>
+                    <a href=<?php echo site_url('Barang') ?>>Data Barang</a>
+                    <a href=<?php echo site_url('user') ?>>Data Pengguna</a>
                     
                 </li>
             </ul>
