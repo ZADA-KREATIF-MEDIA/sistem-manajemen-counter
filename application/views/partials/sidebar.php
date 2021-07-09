@@ -13,17 +13,22 @@
                 <span>Layanan</span>
             </a>
             <ul class="submenu ">
+            <?php if($this->session->userdata('level') == "admin" || $this->session->userdata('level') == "teknisi"):?>
                 <li class="submenu-item ">
                     <a href="<?php echo site_url('Service') ?>">Service Smartphone</a>
                 </li>
+            <?php endif;?>
+            <?php if($this->session->userdata('level') == "admin" || $this->session->userdata('level') == "penjual"):?>
                 <li class="submenu-item ">
                     <a href="<?php echo site_url('Transaksi') ?>">Penjualan Smartphone</a>
                 </li>
                 <li class="submenu-item ">
                     <a href=<?php echo site_url('Pembelian') ?>>Pembelian Smartphone</a>
                 </li>
+                <?php endif;?>  
             </ul>
         </li>
+        <?php if($this->session->userdata('level') == "admin"):?>
         <li class="sidebar-item  has-sub">
             <a href="#" class='sidebar-link'>
                 <i class="bi bi-stack text-primary"></i>
@@ -39,6 +44,8 @@
                
             </ul>
         </li>
+        <?php endif;?>
+        <?php if($this->session->userdata('level') == "admin" || $this->session->userdata('level') == "penjual"):?>
         <li class="sidebar-item  has-sub">
             <a href="#" class='sidebar-link'>
                 <i class="bi bi-book text-warning"></i>
@@ -54,6 +61,8 @@
                
             </ul>
         </li>
+        <?php endif;?>
+        <?php if($this->session->userdata('level') == "admin"):?>
         <li class="sidebar-item  has-sub">
             <a href="#" class='sidebar-link'>
                 <i class="bi bi-server text-danger"></i>
@@ -67,6 +76,7 @@
                 </li>
             </ul>
         </li>
+        <?php endif;?>
         <a href="<?= base_url('login/logout') ?>" class="btn btn-danger btn-sm btn-block mt-3">Logout</a>
     </ul>
 </div>
