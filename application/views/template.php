@@ -109,6 +109,19 @@
         if (i % 3 == 0) rupiah += angkarev.substr(i, 3) + '.';
       return rupiah.split('', rupiah.length - 1).reverse().join('');
     }
+    function formatRupiah(angka, prefix){
+			var number_string = angka.replace(/[^,\d]/g, '').toString(),
+			split   		= number_string.split(','),
+			sisa     		= split[0].length % 3,
+			rupiah     		= split[0].substr(0, sisa),
+			ribuan     		= split[0].substr(sisa).match(/\d{3}/gi);
+			if(ribuan){
+				separator = sisa ? '.' : '';
+				rupiah += separator + ribuan.join('.');
+			}
+			rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+			return prefix == undefined ? rupiah : (rupiah ? rupiah : '');
+		}
     $(document).ready(function() {
       $("#dataTable").DataTable({});
       $('.uang').mask('000.000.000', {
@@ -132,9 +145,8 @@
           },
           success: function(res) {
             var data = $.parseJSON(res);
-            console.log(data);
             $("#namaBarang").val(data.nama_barang);
-            $("#hargaBeli").val(convertToRupiah(data.harga_beli));
+            $("#hargaBeli").val(formatRupiah(data.harga_beli));
             $("#hargaBarang").val(data.harga_beli);
           }
         })
@@ -307,7 +319,7 @@
     }
     <?php 
       switch($this->uri->segment(1)):
-        case "service":
+        case "Service":
     ?>
       $(document).ready(function(){
         $('#dataTable_wrapper').addClass('px-0');

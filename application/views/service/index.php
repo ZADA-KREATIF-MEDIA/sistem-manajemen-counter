@@ -55,7 +55,6 @@
                                                 </button>
                                                 <div class="dropdown-menu bg-light-primary text-dark">
                                                     <a class="dropdown-item" href="<?php echo base_url(); ?>service/edit/<?php echo $item['id_service']; ?>" title="edit"><i class="fa fa-edit"></i>&nbsp;Edit</a>
-                                                    <a href="#" class="dropdown-item" onclick="ubahStatus(<?php echo $item['id_service']; ?>)"><i class="fa fa-exchange"></i>&nbsp;Ubah Status</a>
                                                     <?php if ($this->session->userdata('level') == "admin") : ?>
                                                         <a class="dropdown-item" href="#" onclick="hapusService(<?php echo $item['id_service']; ?>)" title="hapus"><i class="fa fa-trash"></i>&nbsp;Hapus</a>
                                                     <?php endif; ?>

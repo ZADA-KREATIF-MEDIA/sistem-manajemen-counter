@@ -11,7 +11,7 @@
         <?php echo form_open('Transaksi/add') ?>
         <div class="card-body table-responsive">
             <div class="row">
-            <div class="col-md-6">
+                <div class="col-md-6">
                     <div class="form-group">
                         <label for="nama_pembeli">Nama Pembeli</label>
                         <input type="text" class="form-control" name="nama_pembeli" id="nama_pembeli" placeholder="Nama Customer" required>
@@ -42,13 +42,13 @@
                     <div class="col-8">
                         <div class="form-group">
                             <label for="imei">IMEI</label>
-                            <input type="text" class="form-control" name="imei" id="imei" value="" readonly="">
+                            <input type="text" class="form-control" name="imei" id="imei" readonly>
                         </div>
                     </div>
                     <div class="col-4">
                         <div class="form-group">
                             <label for="hargaBeli">Harga</label>
-                            <input type="text" name="harga_beli" id="hargaBeli" class="form-control" value="" readonly="">
+                            <input type="text" name="harga_beli" id="hargaBeli" class="form-control"  readonly>
                         </div>
                     </div>
                 </div>
