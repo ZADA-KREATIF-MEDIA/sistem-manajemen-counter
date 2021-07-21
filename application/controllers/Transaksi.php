@@ -68,6 +68,10 @@ Class Transaksi extends CI_Controller{
     {
         $id_user = $this->uri->segment(3);
         $data_temp = $this->mod->m_show_transaksi_all($id_user);
+        if(count($data_temp) < 1){
+            $_SESSION['msg'] = "belum_memilih_barang";
+            redirect('Transaksi');
+        }
         if($data_temp !=""){
             foreach($data_temp as $values){
                 $data[] = [

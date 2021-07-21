@@ -1,0 +1,4 @@
+Database:
+User : u1026903_counter
+Password : boXop,Q*BTA3
+dbname : u1026903_counter

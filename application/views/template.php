@@ -589,6 +589,20 @@
         }
       })
     <?php endif; ?>
+    <?php if (isset($_SESSION['msg']) && $_SESSION['msg'] == "belum_memilih_barang") : ?>
+      Swal.fire({
+        text: "Harap mengisikan data handphone yang akan dijual terlebih dahulu!",
+        icon: 'warning',
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'OK'
+      }).then((result) => {
+        if (result.value) {
+          <?php unset($_SESSION['msg']); ?>
+        }
+      })
+    <?php endif; ?>
     <?php if (isset($_SESSION['msg']) && $_SESSION['msg'] == "berhasil simpan temp") : ?>
       Swal.fire({
         text: "Berhasil di tambahkan di keranjang penjualan",
