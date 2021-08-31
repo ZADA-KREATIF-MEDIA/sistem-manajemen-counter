@@ -17,7 +17,6 @@
                     <li class="list-group-item px-0">Keterangan          : <?php echo $detail['keterangan']; ?></li>
                     <li class="list-group-item px-0">Nama Customer       : <?php echo $detail['nama_customer']; ?></li>
                     <li class="list-group-item px-0">Nama Petugas        : <?php echo $detail['nama']; ?></li>
-                    <li class="list-group-item px-0">Metode Pembayaran   : <?php echo $detail['metode_bayar']; ?></li>
                     <li class="list-group-item px-0">Harga Beli          : <?php echo number_format($detail['harga_beli'],0,'.','.'); ?></li>
                     <li class="list-group-item px-0">Harga Jual          : <?php echo number_format($detail['harga_jual'],0,'.','.'); ?></li>
                     <li class="list-group-item px-0">Tanggal Transaksi   : <?php echo $detail['tanggal']; ?></li>

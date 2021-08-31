@@ -34,10 +34,6 @@
                       <td><?= $detail->alamat ?></td>
                     </tr>
                     <tr>
-                      <th>METODE PEMBAYARAN</th>
-                      <td><?= $detail->metode_bayar?></td>
-                    </tr>
-                    <tr>
                       <th>TANGGAL PEMBELIAN</th>
                       <td><?= date("d-m-Y", strtotime($detail->tanggal));?></td>
                     </tr>

@@ -44,7 +44,6 @@ Class Transaksi extends CI_Controller{
             'imei'     => $imei,
             'status'   => 'tmp'
         ];
-        // print('<pre>');print_r($data);exit();
         $this->mod->m_update_status_to_tmp($update_tmp);
         $this->mod->m_store($data);
         $_SESSION['msg'] = "berhasil simpan temp";

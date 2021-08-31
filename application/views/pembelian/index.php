@@ -39,22 +39,14 @@
 			<strong><label>IMEI/SERIAL NUMBER</label></strong>
 			<input type="text" name="imei" class="form-control harga" placeholder="Masukan IMEI/Serial number barang" required maxlength="16" minlength="14">
 		</div>
-		<div class="form-group col-md-12">
-			<strong><label>Nama Barang</label></strong>
-			<input type="text" name="nama_barang" placeholder="Masukan nama Barang" class="form-control" required>
-		</div>
 		<div class="row col-12 mx-0">
+			<div class="form-group col-6 ps-0">
+				<strong><label>Nama Barang</label></strong>
+				<input type="text" name="nama_barang" placeholder="Masukan nama Barang" class="form-control" required>
+			</div>
 			<div class="form-group col-6 px-0">
 				<strong><label>Harga barang</label></strong>
 				<input type="text" name="harga" class="form-control harga uang" placeholder="Masukan harga barang" required>
-			</div>
-			<div class="form-group col-6 px-0">
-				<strong><label for="pembayaran">Metode Pembayaran</label></strong>
-				<select name="pembayaran" id="pembayaran" class="form-control" required="">
-					<option>-- Pilih Metode Pembayaran --</option>
-					<option value="cash">Cash</option>
-					<option value="transfer">Transfer</option>
-				</select>
 			</div>
 		</div>
 		<div class="form-group col-md-12">

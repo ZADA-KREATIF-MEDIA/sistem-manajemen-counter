@@ -26,6 +26,7 @@
                                     <th>Tanggal Masuk</th>
                                     <th>Estimasi Jadi</th>
                                     <th>Status</th>
+                                    <th>Keluhan</th>
                                     <th>Biaya Service</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -44,9 +45,10 @@
                                         <td><?php echo $item['nama_customer'] ?></td>
                                         <td><?php echo $item['alamat'] ?></td>
                                         <td><?php echo $item['no_telpn'] ?></td>
-                                        <td><?php echo $item['tanggal_masuk'] ?></td>
-                                        <td><?php echo $item['tanggal_jadi'] ?></td>
+                                        <td><?php echo date('d-m-Y',strtotime($item['tanggal_masuk'])) ?></td>
+                                        <td><?php echo date('d-m-Y',strtotime($item['tanggal_jadi'])) ?></td>
                                         <td><?php echo $item['status'] ?></td>
+                                        <td><?php echo $item['keluhan'] ?></td>
                                         <td><?php echo number_format($total, 0, '.', '.') ?></td>
                                         <td class="text-center">
                                             <div class="btn-group">

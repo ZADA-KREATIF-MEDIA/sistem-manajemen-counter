@@ -343,9 +343,9 @@
                 success:function(res){
                     // console.log(res)
                     Swal.fire(
-                        'Success!',
-                        'Status berhasil diubah.',
-                        'success'
+                      'Success!',
+                      'Status berhasil diubah.',
+                      'success'
                     );
                     location.reload();
                 }

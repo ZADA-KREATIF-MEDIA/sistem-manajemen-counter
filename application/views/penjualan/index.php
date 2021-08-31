@@ -62,16 +62,6 @@
                 </div>
                 <div class="col-6 row mx-0 px-0">
                     <div class="col-12">
-                        <div class="form-group">
-                            <label for="pembayaran">Pembayaran</label>
-                            <select name="pembayaran" id="pembayaran" class="form-control" required="">
-                                <option>-- Pilih Metode Pembayaran --</option>
-                                <option value="cash">Cash</option>
-                                <option value="transfer">Transfer</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-12">
                         <label for="nama_petugas">Nama Petugas</label>
                         <input type="hidden" name="id_user" value="<?php echo $this->session->userdata('id_user') ?>">
                         <input type="text" class="form-control" name="nama_petugas" value="<?php echo $this->session->userdata('nama') ?>" readonly>

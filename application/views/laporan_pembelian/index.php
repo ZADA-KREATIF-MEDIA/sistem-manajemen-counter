@@ -17,7 +17,6 @@
                     <th>IMEI/SN</th>
                     <th>Harga Beli</th>
                     <th>Customer</th>
-                    <th>Pembayaran</th>
                     <th>Petugas</th>
                     <th>Aksi</th>
                 </tr>
@@ -34,7 +33,6 @@
                         <td><?php echo $item->imei ?></td>
                         <td>Rp. <?php echo number_format($item->harga_beli, 0, '.', '.') ?></td>
                         <td><?php echo $item->nama ?></td>
-                        <td><?php echo $item->metode_bayar ?></td>
                         <td><?php echo $item->nama ?></td>
                         <td>
                             <a href="<?php echo base_url(); ?>laporan_pembelian/show/<?php echo $item->imei; ?>" class="btn btn-dark btn-sm" title="Detail"><span>DETAIL</span></a>
